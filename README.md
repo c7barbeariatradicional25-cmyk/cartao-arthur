@@ -1,4 +1,4 @@
-# Cartão digital do Arthur — C7 Barbearia Tradicional
+# Cartão digital do Arthur Braga — C7 Barbearia Tradicional
 
 Página única (`index.html`) com abertura animada: a navalha e a tesoura brigam e voltam para o lugar delas na logo da C7.
 

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Arthur · C7 Barbearia</title>
-<meta name="description" content="Arthur, barbeiro da C7 Barbearia Tradicional. Agende seu horário, fale no WhatsApp e veja as avaliações.">
+<title>Arthur Braga · C7 Barbearia</title>
+<meta name="description" content="Arthur Braga, barbeiro da C7 Barbearia Tradicional. Agende seu horário, fale no WhatsApp e veja as avaliações.">
 <meta name="theme-color" content="#0b0a09">
-<meta property="og:title" content="Arthur · C7 Barbearia Tradicional">
+<meta property="og:title" content="Arthur Braga · C7 Barbearia Tradicional">
 <meta property="og:description" content="Corte e barba no estilo tradicional. Agende seu horário.">
 <meta property="og:image" content="arthur.webp">
 <link rel="icon" href="logo.webp">
@@ -54,14 +54,19 @@ img{display:block;max-width:100%}
 .shock{position:absolute;width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,230,180,.9);box-shadow:0 0 30px rgba(231,190,120,.5),inset 0 0 30px rgba(231,190,120,.35);pointer-events:none;z-index:2}
 .whiteout{position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(255,246,228,1),rgba(240,210,150,.55) 35%,rgba(0,0,0,0) 75%);opacity:0;pointer-events:none;z-index:5}
 .intro-logo{position:absolute;left:0;top:0;z-index:1;clip-path:circle(0% at 50% 50%);will-change:transform,clip-path}
-.intro-logo img{width:100%;height:100%;border-radius:50%;mix-blend-mode:lighten;display:block}
-.intro-logo::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.6) 48%,transparent 60%);background-size:250% 100%;background-position:150% 0;mix-blend-mode:overlay;opacity:0}
+.intro-logo img{width:100%;height:100%;display:block;
+  /* esconde a navalha e a tesoura pequenas da logo até as grandes chegarem */
+  --rr:5.2%;--rs:5.8%;
+  -webkit-mask-image:radial-gradient(circle var(--rr) at 16.05% 90.4%,transparent 98%,#000 100%),radial-gradient(circle var(--rs) at 83.8% 90.3%,transparent 98%,#000 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:radial-gradient(circle var(--rr) at 16.05% 90.4%,transparent 98%,#000 100%),radial-gradient(circle var(--rs) at 83.8% 90.3%,transparent 98%,#000 100%);
+  mask-composite:intersect}
+.intro-logo img.razor-in{--rr:0px}
+.intro-logo img.scissors-in{--rs:0px}
+.intro-logo::after{content:"";position:absolute;inset:0;-webkit-mask:url(logo.webp) center/100% 100% no-repeat;mask:url(logo.webp) center/100% 100% no-repeat;background:linear-gradient(115deg,transparent 35%,rgba(231,201,135,.95) 48%,transparent 60%);background-size:250% 100%;background-position:150% 0;opacity:0}
 .intro-logo.shine::after{animation:shine 1.2s ease-in-out forwards}
 @keyframes shine{0%{opacity:1;background-position:150% 0}100%{opacity:1;background-position:-60% 0}}
-/* tampa a navalha e a tesoura pequenas da logo até as grandes chegarem */
-.icon-mask{position:absolute;width:7.5%;height:8.5%;transform:translate(-50%,-50%);border-radius:40%;background:radial-gradient(closest-side,#0a0a0a 70%,rgba(10,10,10,0));transition:opacity .35s ease}
-.icon-mask.gone{opacity:0}
-.landing{position:absolute;width:13%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;background:radial-gradient(closest-side,rgba(255,240,205,.95),rgba(231,201,135,.35) 55%,transparent);opacity:0;pointer-events:none}
+.landing{position:absolute;width:11%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;background:radial-gradient(closest-side,rgba(255,240,205,.95),rgba(231,201,135,.35) 55%,transparent);opacity:0;pointer-events:none}
 .landing.on{animation:landing .7s ease-out forwards}
 @keyframes landing{0%{opacity:1;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.8)}}
 body.intro-on .hero-logo{opacity:0}
@@ -79,10 +84,12 @@ body.intro-on .hero-logo{opacity:0}
 .hero img[data-photo]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 22%;transform:scale(1.04);animation:heroZoom 9s ease-out forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,.25) 0%,rgba(11,10,9,0) 30%,rgba(11,10,9,.35) 58%,rgba(11,10,9,.94) 86%,var(--bg) 100%)}
-.hero-logo{position:absolute;top:18px;left:18px;z-index:2;width:54px;height:54px;border-radius:50%;mix-blend-mode:lighten;opacity:.95}
+.hero-logo{position:absolute;top:20px;left:20px;z-index:2;width:78px;height:auto;opacity:.95;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
 .hero-text{position:absolute;left:0;right:0;bottom:18px;z-index:2;text-align:center;padding:0 22px}
 .hero-script{font-family:var(--script);font-size:30px;color:var(--gold-2);line-height:1;margin-bottom:-6px}
-.hero-name{font-family:var(--serif);font-weight:500;font-size:clamp(56px,17vw,82px);letter-spacing:.08em;line-height:1;text-transform:uppercase}
+.hero-name{font-family:var(--serif);font-weight:500;font-size:clamp(50px,15vw,76px);letter-spacing:.08em;line-height:.95;text-transform:uppercase}
+.hero-name span{display:block}
+.hero-name span+span{color:var(--gold-2);font-weight:400}
 .hero-role{margin-top:10px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
 
 .stats{display:grid;grid-template-columns:repeat(3,1fr);margin:6px 22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -135,7 +142,7 @@ body.intro-on .hero-logo{opacity:0}
 .reviews .btn+.btn{margin-top:10px}
 
 footer{padding:40px 26px calc(110px + env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:12px}
-footer img{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;mix-blend-mode:lighten}
+footer img{width:130px;height:auto;margin:0 auto 18px;opacity:.9}
 footer strong{display:block;font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:var(--text)}
 footer address{font-style:normal;margin-top:6px}
 
@@ -164,10 +171,8 @@ footer address{font-style:normal;margin-top:6px}
   <div class="scene" id="scene">
     <div class="intro-logo" id="introLogo">
       <img src="logo.webp" alt="">
-      <i class="icon-mask" id="maskRazor" style="left:32.4%;top:71.2%"></i>
-      <i class="icon-mask" id="maskScissors" style="left:66.9%;top:71.2%"></i>
-      <i class="landing" id="landRazor" style="left:32.4%;top:71.2%"></i>
-      <i class="landing" id="landScissors" style="left:66.9%;top:71.2%"></i>
+      <i class="landing" id="landRazor" style="left:16.05%;top:90.4%"></i>
+      <i class="landing" id="landScissors" style="left:83.8%;top:90.3%"></i>
     </div>
     <div class="blade razor" id="razor">
       <svg viewBox="0 0 330 80" aria-hidden="true">
@@ -208,18 +213,18 @@ footer address{font-style:normal;margin-top:6px}
     </div>
     <div class="whiteout" id="whiteout"></div>
   </div>
-  <div class="intro-tag" id="introTag">Barbearia Tradicional</div>
+  <div class="intro-tag" id="introTag">Desde 2019</div>
   <button class="skip" id="skip" type="button">Pular</button>
 </div>
 
 <!-- ================= CARTÃO ================= -->
 <main class="page">
   <header class="hero">
-    <img src="arthur.webp" alt="Arthur na cadeira da C7 Barbearia" data-photo>
+    <img src="arthur.webp" alt="Arthur Braga na cadeira da C7 Barbearia" data-photo>
     <img class="hero-logo" src="logo.webp" alt="C7 Barbearia Tradicional">
     <div class="hero-text">
       <p class="hero-script reveal">o seu barbeiro</p>
-      <h1 class="hero-name reveal" data-cfg="nome">Arthur</h1>
+      <h1 class="hero-name reveal" id="heroName">Arthur Braga</h1>
       <p class="hero-role reveal" data-cfg="cargo">Barbeiro · C7 Barbearia Tradicional</p>
     </div>
   </header>
@@ -271,7 +276,7 @@ footer address{font-style:normal;margin-top:6px}
   <footer>
     <img src="logo.webp" alt="">
     <strong>C7 Barbearia</strong>
-    <span>Tradicional</span>
+    <span>Tradicional · desde 2019</span>
     <address data-cfg="endereco"></address>
     <p style="margin-top:14px;opacity:.6">© <span id="year"></span> C7 Barbearia Tradicional</p>
   </footer>
@@ -289,7 +294,8 @@ footer address{font-style:normal;margin-top:6px}
    DADOS DO CARTÃO — troque aqui (tudo que está com TROCAR)
    ===================================================================== */
 const C7 = {
-  nome: "Arthur",
+  nome: "Arthur Braga",
+  fundacao: "2019",
   cargo: "Barbeiro · C7 Barbearia Tradicional",
   whatsapp: "5500000000000",                 // TROCAR: 55 + DDD + número, só dígitos
   mensagemWhatsapp: "Olá, Arthur! Vim pelo seu cartão e quero agendar um horário.",
@@ -300,12 +306,12 @@ const C7 = {
   maps: "https://www.google.com/maps/search/?api=1&query=C7+Barbearia+Tradicional",
   endereco: "",                               // TROCAR: Rua, número — bairro, cidade
   numeros: [                                  // TROCAR: números reais (deixe [] para esconder)
-    ["+X", "anos de experiência"],
+    ["2019", "fundação da C7"],
     ["+X", "clientes atendidos"],
     ["5,0", "no Google"]
   ],
   sobre: [
-    "Sou o Arthur, barbeiro da C7 Barbearia Tradicional. Meu trabalho é unir a técnica da barbearia clássica — tesoura, navalha e toalha quente — com o corte que combina com o seu estilo e a sua rotina.",
+    "Sou o Arthur Braga, barbeiro da C7 Barbearia Tradicional, que abriu as portas em 2019. Meu trabalho é unir a técnica da barbearia clássica — tesoura, navalha e toalha quente — com o corte que combina com o seu estilo e a sua rotina.",
     "Cada atendimento começa com uma conversa: entender o que você quer, o formato do rosto e como você cuida do cabelo e da barba no dia a dia. Assim você sai daqui com um visual que dura até o próximo horário."
   ],
   frase: "Mais do que um corte: um momento seu, feito com tempo e cuidado.",
@@ -338,6 +344,8 @@ document.querySelectorAll("[data-cfg]").forEach(el => { el.textContent = C7[el.d
 document.querySelector("[data-cfg-html=sobre]").innerHTML = C7.sobre.map(p => `<p class="lead reveal">${p}</p>`).join("");
 document.querySelectorAll("[data-link]").forEach(a => a.href = links[a.dataset.link]);
 $("#year").textContent = new Date().getFullYear();
+{ const [first, ...rest] = C7.nome.split(" ");
+  $("#heroName").innerHTML = `<span>${first}</span>${rest.length ? `<span>${rest.join(" ")}</span>` : ""}`; }
 
 $("#stats").innerHTML = C7.numeros.map(([n,l]) => `<div><strong>${n}</strong><span>${l}</span></div>`).join("");
 if(!C7.numeros.length) $("#stats").hidden = true;
@@ -391,10 +399,11 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
 
   const W = innerWidth, H = innerHeight;
   const C = {x: W/2, y: H*0.46};
-  const L = Math.min(W*0.8, H*0.6, 440);           // tamanho da logo
-  logo.style.width = logo.style.height = L + "px";
-  logo.style.transform = `translate(${C.x-L/2}px,${C.y-L/2}px)`;
-  tag.style.top = (C.y + L/2 + 22) + "px";
+  const L = Math.min(W*0.84, H*0.6, 520);          // largura da logo
+  const LH = L * 0.721;                              // a logo é mais larga que alta
+  logo.style.width = L + "px"; logo.style.height = LH + "px";
+  logo.style.transform = `translate(${C.x-L/2}px,${C.y-LH/2}px)`;
+  tag.style.top = (C.y + LH/2 + 26) + "px";
   tag.style.opacity = 0;
 
   bg.animate([{opacity:0},{opacity:1}], {duration:700, fill:"forwards"});
@@ -413,9 +422,9 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
   }
 
   if(reduce){
-    logo.style.clipPath = "circle(75% at 50% 50%)";
+    logo.style.clipPath = "circle(80% at 50% 50%)";
+    logo.querySelector("img").classList.add("razor-in","scissors-in");
     logo.animate([{opacity:0},{opacity:1}], {duration:600, fill:"forwards"});
-    $("#maskRazor").classList.add("gone"); $("#maskScissors").classList.add("gone");
     tag.animate([{opacity:0},{opacity:1}], {duration:600, delay:300, fill:"forwards"});
     at(2000, () => finish());
     return;
@@ -510,28 +519,28 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
     /* a logo nasce da onda de choque */
     logo.animate([
       {clipPath:"circle(0% at 50% 50%)", filter:"brightness(2.4)"},
-      {clipPath:"circle(75% at 50% 50%)", filter:"brightness(.9)"}
+      {clipPath:"circle(80% at 50% 50%)", filter:"brightness(.9)"}
     ], {duration:750, easing:"cubic-bezier(.2,.7,.3,1)", fill:"forwards"});
   });
 
   /* navalha e tesoura voltam para o lugar delas na logo */
-  function flyHome(el, fx, fy, angle, mask, land, delay){
-    const tx = C.x - L/2 + L*fx, ty = C.y - L/2 + L*fy;
-    const size = L*0.08 / el.offsetWidth;
+  function flyHome(el, fx, fy, angle, length, cls, land, delay){
+    const tx = C.x - L/2 + L*fx, ty = C.y - LH/2 + LH*fy;
+    const size = L*length / el.offsetWidth;
     const from = getComputedStyle(el).transform;
     el.getAnimations().forEach(an => an.cancel());
     el.style.transform = from; el.style.opacity = 1;
     el.animate([
       {transform: from},
-      {transform: byCenter(el, (C.x+tx)/2 + (tx<C.x?-W*.18:W*.18), C.y - L*.42, angle + (tx<C.x?-200:200), .5), offset:.45},
+      {transform: byCenter(el, (C.x+tx)/2 + (tx<C.x?-W*.12:W*.12), C.y - LH*.55, angle + (tx<C.x?-200:200), .5), offset:.45},
       {transform: byCenter(el, tx, ty, angle, size), opacity:1, offset:.88},
       {transform: byCenter(el, tx, ty, angle, size), opacity:0}
     ], {duration:1050, delay, easing:"cubic-bezier(.45,.05,.25,1)", fill:"forwards"});
-    at(delay + 920, () => { mask.classList.add("gone"); land.classList.add("on"); });
+    at(delay + 920, () => { logo.querySelector("img").classList.add(cls); land.classList.add("on"); });
   }
   at(3250, () => {
-    flyHome(razor,    .324, .712, 129, $("#maskRazor"),    $("#landRazor"),    0);
-    flyHome(scissors, .669, .712,  40, $("#maskScissors"), $("#landScissors"), 80);
+    flyHome(razor,    .1605, .904, 129, .085, "razor-in",    $("#landRazor"),    0);
+    flyHome(scissors, .838,  .903,  40, .095, "scissors-in", $("#landScissors"), 80);
   });
   at(4300, () => {                               // logo completa acende
     logo.animate([{filter:"brightness(.9) drop-shadow(0 0 0 rgba(231,201,135,0))"},{filter:"brightness(1.12) drop-shadow(0 0 34px rgba(231,201,135,.55))",offset:.4},{filter:"brightness(1) drop-shadow(0 0 12px rgba(231,201,135,.2))"}], {duration:1300, fill:"forwards"});
@@ -544,8 +553,8 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
     const hl = document.querySelector(".hero-logo").getBoundingClientRect();
     const s = hl.width / L;
     logo.animate([
-      {transform:`translate(${C.x-L/2}px,${C.y-L/2}px) scale(1)`},
-      {transform:`translate(${hl.left - (L - hl.width)/2}px,${hl.top - (L - hl.height)/2}px) scale(${s})`}
+      {transform:`translate(${C.x-L/2}px,${C.y-LH/2}px) scale(1)`},
+      {transform:`translate(${hl.left - (L - hl.width)/2}px,${hl.top - (LH - hl.height)/2}px) scale(${s})`}
     ], {duration:900, easing:"cubic-bezier(.65,0,.25,1)", fill:"forwards"});
     tag.animate([{opacity:1},{opacity:0}], {duration:300, fill:"forwards"});
     bg.animate([{opacity:1},{opacity:0}], {duration:800, delay:150, fill:"forwards"});
