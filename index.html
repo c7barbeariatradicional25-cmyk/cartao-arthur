@@ -188,6 +188,11 @@ body.intro-on .hero-logo{opacity:0}
 .link-card.in img{transform:scale(1)}
 .link-card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,10,9,.92) 0%,rgba(11,10,9,.55) 60%,rgba(11,10,9,.2) 100%);z-index:-1}
 .link-card:hover img{filter:grayscale(0) brightness(.65)}
+.link-card.facade{height:230px}
+.link-card.facade img{filter:brightness(.9) saturate(.95)}
+.link-card.facade::before{background:linear-gradient(180deg,rgba(11,10,9,0) 0%,rgba(11,10,9,.1) 35%,rgba(11,10,9,.88) 72%,rgba(11,10,9,.96) 100%)}
+.link-card.facade .lc{top:auto;bottom:16px;transform:none}
+.link-card.facade .ico{top:auto;bottom:18px;transform:none}
 .link-card .lc{position:absolute;left:20px;top:50%;transform:translateY(-50%);right:80px}
 .link-card small{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-2);margin-bottom:2px}
 .link-card strong{display:block;font-family:var(--serif);font-weight:500;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.04em}
@@ -494,10 +499,10 @@ const cards = [
   ["Online", "Agendamento", "Escolha dia e horário", "agendamento", ICONS.agenda, "corte.webp", "50% 38%"],
   ["@" + C7.instagram.replace(/^@/,""), "Instagram", "Cortes e bastidores", "instagram", ICONS.insta, "acabamento.webp", "50% 40%"],
   ["Google · 4,9 ★", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "navalha-vapor.webp", "50% 22%"],
-  ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "arthur.webp", "40% 80%"]
+  ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "fachada.webp", "70% 45%"]
 ];
 $("#links").innerHTML = cards.map(([small,title,btn,key,ico,img,pos],i) => `
-  <a class="link-card" data-a="wipe" style="--d:${i*90}ms" href="${links[key]}" target="_blank" rel="noopener">
+  <a class="link-card${img === "fachada.webp" ? " facade" : ""}" data-a="wipe" style="--d:${i*90}ms" href="${links[key]}" target="_blank" rel="noopener">
     <img src="${img}" alt="" style="object-position:${pos}" loading="lazy">
     <div class="lc"><small>${small}</small><strong>${title}</strong><span>${btn} ↗</span></div>
     <div class="ico">${ico}</div>
