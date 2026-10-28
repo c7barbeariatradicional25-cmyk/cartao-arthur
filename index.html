@@ -76,73 +76,129 @@ body.intro-on .hero-logo{opacity:0}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ================= CARTÃO ================= */
-.page{max-width:480px;margin:0 auto;background:var(--bg);position:relative;box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px rgba(0,0,0,.6)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
-.reveal.in{opacity:1;transform:none}
+.page{max-width:480px;margin:0 auto;background:var(--bg);position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px rgba(0,0,0,.6)}
 
-.hero{position:relative;height:min(118vw,620px);overflow:hidden}
-.hero img[data-photo]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 22%;transform:scale(1.04);animation:heroZoom 9s ease-out forwards}
-@keyframes heroZoom{to{transform:scale(1)}}
+/* ---- entradas ao rolar a página ---- */
+[data-a]{--d:0ms;transition:opacity .9s cubic-bezier(.2,.7,.2,1) var(--d),transform 1s cubic-bezier(.2,.7,.2,1) var(--d),clip-path 1.1s cubic-bezier(.7,0,.2,1) var(--d),filter 1s ease var(--d)}
+[data-a=up]{opacity:0;transform:translateY(34px)}
+[data-a=left]{opacity:0;transform:translateX(-46px)}
+[data-a=right]{opacity:0;transform:translateX(46px)}
+[data-a=zoom]{opacity:0;transform:scale(.86)}
+[data-a=blur]{opacity:0;filter:blur(10px);transform:scale(1.06)}
+[data-a=wipe]{clip-path:inset(0 100% 0 0)}
+[data-a=rise]{clip-path:inset(100% 0 0 0)}
+[data-a=line]{transform:scaleX(0);transform-origin:left}
+[data-a].in{opacity:1;transform:none;clip-path:inset(0 0 0 0);filter:none}
+/* palavras e letras entram uma a uma */
+.split .w,.split .l{display:inline-block;opacity:0;transform:translateY(.6em) rotate(4deg);transition:opacity .6s ease var(--d),transform .8s cubic-bezier(.2,.8,.2,1) var(--d)}
+.split .l{transform:translateY(.9em)}
+.split.in .w,.split.in .l{opacity:1;transform:none}
+.split .sp{display:inline-block;width:.28em}
+
+/* ---- topo ---- */
+.hero{position:relative;height:min(122vw,640px);overflow:hidden}
+.hero img[data-photo]{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;object-position:52% 22%;will-change:transform}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,.25) 0%,rgba(11,10,9,0) 30%,rgba(11,10,9,.35) 58%,rgba(11,10,9,.94) 86%,var(--bg) 100%)}
 .hero-logo{position:absolute;top:20px;left:20px;z-index:2;width:78px;height:auto;opacity:.95;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
 .hero-text{position:absolute;left:0;right:0;bottom:18px;z-index:2;text-align:center;padding:0 22px}
-.hero-script{font-family:var(--script);font-size:30px;color:var(--gold-2);line-height:1;margin-bottom:-6px}
-.hero-name{font-family:var(--serif);font-weight:500;font-size:clamp(50px,15vw,76px);letter-spacing:.08em;line-height:.95;text-transform:uppercase}
-.hero-name span{display:block}
-.hero-name span+span{color:var(--gold-2);font-weight:400}
-.hero-role{margin-top:10px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+.hero-script{font-family:var(--script);font-size:30px;color:var(--gold-2);line-height:1;margin-bottom:-4px}
+.hero-name{font-family:var(--serif);font-weight:500;font-size:clamp(50px,15vw,76px);letter-spacing:.08em;line-height:.98;text-transform:uppercase}
+.hero-name .row{display:block;overflow:hidden;padding-bottom:.04em}
+.hero-name .row+.row{color:var(--gold-2);font-weight:400}
+.hero-rule{display:block;width:64px;height:1px;margin:14px auto 10px;background:var(--gold)}
+.hero-role{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.scroll-hint{position:absolute;right:20px;top:22px;z-index:2;display:grid;justify-items:center;gap:6px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(239,232,220,.7)}
+.scroll-hint i{width:1px;height:34px;background:linear-gradient(var(--gold-2),transparent);animation:hint 1.8s ease-in-out infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:6px 22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stats div{padding:14px 6px;text-align:center}
-.stats div+div{border-left:1px solid var(--line)}
-.stats strong{display:block;font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1;color:var(--gold-2)}
-.stats span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:6px 22px 0;position:relative}
+.stats::before,.stats::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line);transform:scaleX(0);transition:transform 1.2s cubic-bezier(.7,0,.2,1)}
+.stats::before{top:0}.stats::after{bottom:0;transition-delay:.15s}
+.stats.in::before,.stats.in::after{transform:scaleX(1)}
+.stats div{padding:16px 6px;text-align:center;position:relative}
+.stats div+div::before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:1px;background:var(--line)}
+.stats strong{display:block;font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.1;color:var(--gold-2);font-variant-numeric:tabular-nums}
+.stats span{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.5;margin-top:2px}
 
-.cta{display:grid;gap:10px;padding:22px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:4px;font:500 12px var(--sans);letter-spacing:.22em;text-transform:uppercase;transition:transform .15s ease,background .2s ease,border-color .2s ease}
+.cta{display:grid;gap:10px;padding:24px 22px 10px}
+.btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:4px;font:500 12px var(--sans);letter-spacing:.22em;text-transform:uppercase;transition:transform .15s ease,background .2s ease,border-color .2s ease}
 .btn:active{transform:scale(.98)}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#17120b;font-weight:600;box-shadow:0 10px 26px rgba(201,163,91,.22)}
+.btn-gold::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:btnShine 3.6s ease-in-out 1.5s infinite}
+@keyframes btnShine{0%{left:-60%}35%,100%{left:130%}}
 .btn-line{border:1px solid rgba(231,201,135,.45);color:var(--text)}
 .btn-line:hover{border-color:var(--gold-2)}
 
-.section{padding:38px 26px}
-.script-title{font-family:var(--script);font-weight:400;font-size:46px;line-height:1;color:var(--text);text-align:center}
-.script-title b{font-family:var(--serif);font-weight:400;font-size:.62em;letter-spacing:.18em;text-transform:uppercase;display:block;color:var(--muted);margin-bottom:6px}
-.chev{display:block;margin:12px auto 18px;width:18px;color:var(--gold)}
-.lead{font-size:14.5px;color:#cfc6b8;text-align:center}
-.lead+.lead{margin-top:12px}
-.quote{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;text-align:center;color:var(--text);margin-top:26px;padding:0 6px}
-.quote::before,.quote::after{content:"";display:block;width:40px;height:1px;background:var(--gold);margin:16px auto;opacity:.6}
+/* ---- seções ---- */
+.section{padding:56px 26px 20px;position:relative}
+.eyebrow{display:block;text-align:center;font-family:var(--serif);font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--muted)}
+.script-title{font-family:var(--script);font-weight:400;font-size:52px;line-height:1.05;color:var(--text);text-align:center;margin-top:2px}
+.title-rule{display:block;width:44px;height:1px;margin:14px auto 22px;background:var(--gold)}
+.lead{font-size:15px;line-height:1.75;color:#cfc6b8;text-align:center}
+.lead+.lead{margin-top:14px}
+.lead b{color:var(--gold-2);font-weight:500}
 
-.why{display:grid;gap:0;margin-top:22px;border-top:1px solid var(--line)}
-.why li{list-style:none;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
-.why em{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1;color:var(--gold)}
-.why strong{display:block;font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.2;color:var(--text)}
+.about-photo{position:relative;margin:30px -26px 0;height:300px;overflow:hidden}
+.about-photo img{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover;object-position:50% 12%;filter:grayscale(.25) contrast(1.05);will-change:transform}
+.about-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(11,10,9,0) 25%,rgba(11,10,9,0) 70%,var(--bg) 100%)}
+.about-photo figcaption{position:absolute;left:0;right:0;bottom:26px;z-index:2;text-align:center;font-family:var(--script);font-size:34px;color:var(--gold-2)}
+
+/* ---- trajetória ---- */
+.timeline{position:relative;margin:8px 0 0;padding:6px 0 6px}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
+.timeline .fill{position:absolute;left:50%;top:0;width:1px;height:100%;background:linear-gradient(var(--gold-2),var(--gold));transform-origin:top;transform:scaleY(var(--p,0));box-shadow:0 0 10px rgba(231,201,135,.5)}
+.milestone{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:18px 0}
+.milestone .dot{position:absolute;left:50%;top:30px;width:13px;height:13px;margin-left:-6px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);transform:scale(0);transition:transform .6s cubic-bezier(.3,1.6,.5,1) .2s,background .4s ease .5s}
+.milestone.in .dot{transform:scale(1);background:var(--gold-2)}
+.milestone .year{font-family:var(--serif);font-size:44px;line-height:1;color:var(--gold-2);font-weight:500}
+.milestone h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;margin:4px 0 4px}
+.milestone p{font-size:13px;color:var(--muted);line-height:1.55}
+.milestone .side{grid-column:1;text-align:right}
+.milestone.flip .side{grid-column:2;text-align:left}
+
+/* ---- frase em destaque sobre a foto ---- */
+.statement{position:relative;margin-top:50px;height:min(118vw,560px);overflow:hidden;display:grid;place-items:center;text-align:center;padding:0 30px}
+.statement img{position:absolute;left:0;top:-20%;width:100%;height:140%;object-fit:cover;object-position:30% 70%;filter:brightness(.32) grayscale(.3);will-change:transform}
+.statement::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),rgba(11,10,9,.15) 25%,rgba(11,10,9,.15) 75%,var(--bg));z-index:1}
+.statement blockquote{position:relative;z-index:2;font-family:var(--serif);font-style:italic;font-size:clamp(28px,8.4vw,38px);line-height:1.22;color:var(--text)}
+.statement blockquote .w{opacity:.14;transition:opacity .25s linear}
+.statement blockquote .w.on{opacity:1}
+.statement blockquote .w.gold{color:var(--gold-2)}
+.statement cite{position:relative;z-index:2;display:block;margin-top:18px;font-style:normal;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+
+.why{display:grid;gap:0;margin-top:4px;list-style:none}
+.why li{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.why li:first-child{border-top:1px solid var(--line)}
+.why em{font-family:var(--serif);font-style:italic;font-size:32px;line-height:1;color:var(--gold)}
+.why strong{display:block;font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.2;color:var(--text)}
 .why p{font-size:13.5px;color:var(--muted);margin-top:3px}
 
-.links{display:grid;gap:12px;padding:0 18px 10px}
-.link-card{position:relative;display:block;height:132px;border-radius:6px;overflow:hidden;background:var(--card);isolation:isolate}
-.link-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) brightness(.55);transition:transform .6s ease,filter .4s ease;z-index:-2}
+.links{display:grid;gap:14px;padding:0 18px 10px}
+.link-card{position:relative;display:block;height:140px;border-radius:6px;overflow:hidden;background:var(--card);isolation:isolate}
+.link-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) brightness(.55);transform:scale(1.25);transition:transform 1.6s cubic-bezier(.2,.7,.2,1) var(--d),filter .4s ease;z-index:-2}
+.link-card.in img{transform:scale(1)}
 .link-card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,10,9,.92) 0%,rgba(11,10,9,.55) 60%,rgba(11,10,9,.2) 100%);z-index:-1}
-.link-card:hover img{transform:scale(1.05);filter:grayscale(0) brightness(.65)}
-.link-card .lc{position:absolute;left:20px;top:50%;transform:translateY(-50%);right:20px}
+.link-card:hover img{filter:grayscale(0) brightness(.65)}
+.link-card .lc{position:absolute;left:20px;top:50%;transform:translateY(-50%);right:80px}
 .link-card small{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-2);margin-bottom:2px}
 .link-card strong{display:block;font-family:var(--serif);font-weight:500;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.04em}
 .link-card span{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 10px;border-radius:2px;background:rgba(239,232,220,.9);color:#17120b;font:600 10px var(--sans);letter-spacing:.16em;text-transform:uppercase}
-.link-card .ico{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(231,201,135,.4);display:grid;place-items:center;color:var(--gold-2)}
+.link-card .ico{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(231,201,135,.4);display:grid;place-items:center;color:var(--gold-2)}
 .link-card .ico svg{width:20px;height:20px}
-.link-card.no-img{background:linear-gradient(135deg,#221d17,#12100e)}
 
-.reviews{margin:26px 18px 0;padding:30px 22px;border:1px solid var(--line);border-radius:6px;text-align:center;background:linear-gradient(180deg,#16130f,#0f0d0b)}
-.stars{display:flex;justify-content:center;gap:4px;color:var(--gold-2);margin:10px 0 6px}
-.stars svg{width:20px;height:20px}
+.reviews{margin:40px 18px 0;padding:34px 22px;border:1px solid var(--line);border-radius:6px;text-align:center;background:linear-gradient(180deg,#16130f,#0f0d0b)}
+.stars{display:flex;justify-content:center;gap:6px;color:var(--gold-2);margin:12px 0 8px}
+.stars svg{width:22px;height:22px;transform:scale(0) rotate(-40deg);transition:transform .5s cubic-bezier(.3,1.7,.5,1)}
+.reviews.in .stars svg{transform:none}
+.reviews.in .stars svg:nth-child(2){transition-delay:.1s}.reviews.in .stars svg:nth-child(3){transition-delay:.2s}
+.reviews.in .stars svg:nth-child(4){transition-delay:.3s}.reviews.in .stars svg:nth-child(5){transition-delay:.4s}
 .reviews p{font-size:13.5px;color:var(--muted);margin-bottom:18px}
 .reviews .btn{min-height:48px}
 .reviews .btn+.btn{margin-top:10px}
 
-footer{padding:40px 26px calc(110px + env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:12px}
-footer img{width:130px;height:auto;margin:0 auto 18px;opacity:.9}
+footer{padding:56px 26px calc(110px + env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:12px}
+footer img{width:140px;height:auto;margin:0 auto 18px;opacity:.92}
 footer strong{display:block;font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:var(--text)}
 footer address{font-style:normal;margin-top:6px}
 
@@ -158,8 +214,9 @@ footer address{font-style:normal;margin-top:6px}
 }
 @media (prefers-reduced-motion:reduce){
   .blade,.spark,.ring-burst{display:none}
-  .hero img{animation:none}
-  .reveal{opacity:1;transform:none;transition:none}
+  [data-a],.split .w,.split .l{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important;transition:none!important}
+  .statement blockquote .w{opacity:1}
+  .stars svg,.milestone .dot{transform:none}
 }
 </style>
 </head>
@@ -213,70 +270,90 @@ footer address{font-style:normal;margin-top:6px}
     </div>
     <div class="whiteout" id="whiteout"></div>
   </div>
-  <div class="intro-tag" id="introTag">Desde 2019</div>
+  <div class="intro-tag" id="introTag">Arthur Braga</div>
   <button class="skip" id="skip" type="button">Pular</button>
 </div>
 
 <!-- ================= CARTÃO ================= -->
 <main class="page">
   <header class="hero">
-    <img src="arthur.webp" alt="Arthur Braga na cadeira da C7 Barbearia" data-photo>
+    <img src="arthur.webp" alt="Arthur Braga na cadeira da C7 Barbearia" data-photo id="heroPhoto">
     <img class="hero-logo" src="logo.webp" alt="C7 Barbearia Tradicional">
+    <div class="scroll-hint" data-a="up" style="--d:1400ms"><span>role</span><i></i></div>
     <div class="hero-text">
-      <p class="hero-script reveal">o seu barbeiro</p>
-      <h1 class="hero-name reveal" id="heroName">Arthur Braga</h1>
-      <p class="hero-role reveal" data-cfg="cargo">Barbeiro · C7 Barbearia Tradicional</p>
+      <p class="hero-script" data-a="blur">o seu barbeiro</p>
+      <h1 class="hero-name split" id="heroName">Arthur Braga</h1>
+      <i class="hero-rule" data-a="line" style="--d:900ms;margin-left:auto;margin-right:auto;transform-origin:center"></i>
+      <p class="hero-role" data-a="up" style="--d:1000ms" data-cfg="cargo"></p>
     </div>
   </header>
 
-  <div class="stats reveal" id="stats"></div>
+  <div class="stats" id="stats" data-watch></div>
 
-  <div class="cta reveal">
-    <a class="btn btn-gold" data-link="agendamento" target="_blank" rel="noopener">
+  <div class="cta">
+    <a class="btn btn-gold" data-a="up" style="--d:100ms" data-link="agendamento" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
       Agendar meu horário
     </a>
-    <a class="btn btn-line" data-link="whatsapp" target="_blank" rel="noopener">
+    <a class="btn btn-line" data-a="up" style="--d:220ms" data-link="whatsapp" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.2-.3Z"/></svg>
       Falar no WhatsApp
     </a>
   </div>
 
   <section class="section">
-    <h2 class="script-title reveal"><b>conheça</b>Sobre mim</h2>
-    <svg class="chev" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 8 10-8"/></svg>
-    <div data-cfg-html="sobre"></div>
-    <p class="quote reveal" data-cfg="frase"></p>
+    <span class="eyebrow" data-a="up">conheça</span>
+    <h2 class="script-title" data-a="wipe" style="--d:150ms">Sobre mim</h2>
+    <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
+    <div id="about"></div>
+    <figure class="about-photo" data-a="rise">
+      <img src="arthur.webp" alt="" data-parallax=".18">
+      <figcaption data-a="blur" style="--d:500ms">tesoura, navalha e conversa</figcaption>
+    </figure>
   </section>
 
-  <section class="section" style="padding-top:8px">
-    <h2 class="script-title reveal"><b>por que</b>me escolher</h2>
+  <section class="section" style="padding-top:30px">
+    <span class="eyebrow" data-a="up">minha</span>
+    <h2 class="script-title" data-a="wipe" style="--d:150ms">Trajetória</h2>
+    <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
+    <div class="timeline" id="timeline"><i class="fill"></i></div>
+  </section>
+
+  <section class="statement" id="statement">
+    <img src="arthur.webp" alt="" data-parallax=".25">
+    <div>
+      <blockquote id="quote"></blockquote>
+      <cite data-a="up">— Arthur Braga</cite>
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="eyebrow" data-a="up">por que</span>
+    <h2 class="script-title" data-a="wipe" style="--d:150ms">me escolher</h2>
+    <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
     <ul class="why" id="why"></ul>
   </section>
 
-  <section style="padding-top:6px">
-    <h2 class="script-title reveal" style="margin-bottom:20px"><b>acesse</b>Meus links</h2>
+  <section style="padding-top:40px">
+    <span class="eyebrow" data-a="up">acesse</span>
+    <h2 class="script-title" data-a="wipe" style="--d:150ms">Meus links</h2>
+    <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
     <nav class="links" id="links"></nav>
   </section>
 
-  <section class="reviews reveal">
-    <h2 class="script-title" style="font-size:40px"><b>clientes</b>Avaliações</h2>
-    <div class="stars" aria-label="5 estrelas">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg>
-    </div>
+  <section class="reviews" data-a="up">
+    <span class="eyebrow">clientes</span>
+    <h2 class="script-title" style="font-size:44px">Avaliações</h2>
+    <div class="stars" aria-label="5 estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg></div>
     <p>Veja o que os clientes falam da C7 no Google — e, se já cortou com a gente, deixe a sua avaliação.</p>
     <a class="btn btn-gold" data-link="avaliacoes" target="_blank" rel="noopener">Ver avaliações no Google</a>
     <a class="btn btn-line" data-link="avaliar" target="_blank" rel="noopener">Deixar minha avaliação</a>
   </section>
 
   <footer>
-    <img src="logo.webp" alt="">
-    <strong>C7 Barbearia</strong>
-    <span>Tradicional · desde 2019</span>
+    <img src="logo.webp" alt="" data-a="zoom">
+    <strong data-a="up" style="--d:150ms">Arthur Braga</strong>
+    <span data-a="up" style="--d:250ms">C7 Barbearia Tradicional</span>
     <address data-cfg="endereco"></address>
     <p style="margin-top:14px;opacity:.6">© <span id="year"></span> C7 Barbearia Tradicional</p>
   </footer>
@@ -295,8 +372,7 @@ footer address{font-style:normal;margin-top:6px}
    ===================================================================== */
 const C7 = {
   nome: "Arthur Braga",
-  fundacao: "2019",
-  cargo: "Barbeiro · C7 Barbearia Tradicional",
+  cargo: "Barbeiro e proprietário · C7 Barbearia Tradicional",
   whatsapp: "5500000000000",                 // TROCAR: 55 + DDD + número, só dígitos
   mensagemWhatsapp: "Olá, Arthur! Vim pelo seu cartão e quero agendar um horário.",
   instagram: "c7barbeariatradicional",       // TROCAR: @ sem o arroba
@@ -305,16 +381,22 @@ const C7 = {
   avaliar: "",                                // TROCAR: link "Escrever avaliação" do Google (g.page/r/.../review)
   maps: "https://www.google.com/maps/search/?api=1&query=C7+Barbearia+Tradicional",
   endereco: "",                               // TROCAR: Rua, número — bairro, cidade
-  numeros: [                                  // TROCAR: números reais (deixe [] para esconder)
-    ["2019", "fundação da C7"],
-    ["+X", "clientes atendidos"],
-    ["5,0", "no Google"]
+  numeros: [                                  // número, texto (os números contam ao aparecer)
+    ["2019", "barbearia própria desde"],
+    ["2025", "à frente da C7"],
+    ["5,0", "no Google"]                      // TROCAR: nota real
   ],
   sobre: [
-    "Sou o Arthur Braga, barbeiro da C7 Barbearia Tradicional, que abriu as portas em 2019. Meu trabalho é unir a técnica da barbearia clássica — tesoura, navalha e toalha quente — com o corte que combina com o seu estilo e a sua rotina.",
-    "Cada atendimento começa com uma conversa: entender o que você quer, o formato do rosto e como você cuida do cabelo e da barba no dia a dia. Assim você sai daqui com um visual que dura até o próximo horário."
+    "Sou o <b>Arthur Braga</b>. Tenho barbearia própria desde <b>2019</b> e, em <b>2025</b>, assumi a C7 Barbearia Tradicional para levar o meu jeito de atender a um espaço com ainda mais estrutura.",
+    "Meu trabalho une a técnica da barbearia clássica — tesoura e navalha — com o corte que combina com o seu estilo e a sua rotina. Cada atendimento começa com uma conversa, para você sair daqui com um visual que dura até o próximo horário."
+  ],
+  trajetoria: [
+    ["2019", "Minha barbearia", "Abri minha própria barbearia e comecei a construir uma clientela fiel."],
+    ["2025", "Assumi a C7", "Comprei a C7 Barbearia Tradicional e trouxe para ela o meu padrão de atendimento."],
+    ["Hoje", "O seu horário", "Hora marcada, técnica tradicional e o Clube C7 para quem é de casa."]
   ],
   frase: "Mais do que um corte: um momento seu, feito com tempo e cuidado.",
+  fraseDestaque: ["momento", "seu,", "tempo", "cuidado."],   // palavras em dourado
   porque: [
     ["Técnica tradicional", "Tesoura e navalha no acabamento, do jeito que barbearia de verdade faz."],
     ["Hora marcada de verdade", "Você agenda pelo app e é atendido no seu horário, sem fila."],
@@ -341,37 +423,129 @@ const links = {
 };
 
 document.querySelectorAll("[data-cfg]").forEach(el => { el.textContent = C7[el.dataset.cfg] || ""; if(!el.textContent) el.hidden = true; });
-document.querySelector("[data-cfg-html=sobre]").innerHTML = C7.sobre.map(p => `<p class="lead reveal">${p}</p>`).join("");
 document.querySelectorAll("[data-link]").forEach(a => a.href = links[a.dataset.link]);
 $("#year").textContent = new Date().getFullYear();
-{ const [first, ...rest] = C7.nome.split(" ");
-  $("#heroName").innerHTML = `<span>${first}</span>${rest.length ? `<span>${rest.join(" ")}</span>` : ""}`; }
 
-$("#stats").innerHTML = C7.numeros.map(([n,l]) => `<div><strong>${n}</strong><span>${l}</span></div>`).join("");
+/* nome: letra por letra, em duas linhas */
+{ const [first, ...rest] = C7.nome.split(" ");
+  let i = 0;
+  const row = word => `<span class="row">${[...word].map(ch => `<span class="l" style="--d:${250 + (i++)*55}ms">${ch}</span>`).join("")}</span>`;
+  $("#heroName").innerHTML = row(first) + (rest.length ? row(rest.join(" ")) : ""); }
+
+/* números */
+$("#stats").innerHTML = C7.numeros.map(([n,l],i) => `<div data-a="up" style="--d:${i*120}ms"><strong data-count="${n}">${n}</strong><span>${l}</span></div>`).join("");
 if(!C7.numeros.length) $("#stats").hidden = true;
 
-$("#why").innerHTML = C7.porque.map(([t,d],i) => `<li class="reveal"><em>0${i+1}</em><div><strong>${t}</strong><p>${d}</p></div></li>`).join("");
+/* sobre: palavra por palavra */
+$("#about").innerHTML = C7.sobre.map(p => `<p class="lead split">${p}</p>`).join("");
+document.querySelectorAll("#about .split").forEach(p => {
+  let i = 0;
+  const walk = node => [...node.childNodes].forEach(n => {
+    if(n.nodeType === 3){
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(t => {
+        if(!t) return;
+        if(/^\s+$/.test(t)){ frag.append(" "); return; }
+        const w = document.createElement("span"); w.className = "w"; w.style.setProperty("--d", (i++*22) + "ms"); w.textContent = t; frag.append(w);
+      });
+      n.replaceWith(frag);
+    } else walk(n);
+  });
+  walk(p);
+});
 
+/* trajetória */
+$("#timeline").insertAdjacentHTML("beforeend", C7.trajetoria.map(([y,t,d]) => `
+  <div class="milestone" data-watch>
+    <i class="dot"></i>
+    <div class="side" data-a="${'left'}"><div class="year">${y}</div><h3>${t}</h3><p>${d}</p></div>
+  </div>`).join(""));
+document.querySelectorAll(".milestone").forEach((m,i) => { if(i%2===0){ m.classList.add("flip"); m.querySelector(".side").dataset.a = "right"; } });
+
+/* frase em destaque: acende palavra por palavra conforme a rolagem */
+$("#quote").innerHTML = C7.frase.split(" ").map(w => `<span class="w${C7.fraseDestaque.includes(w) ? " gold" : ""}">${w}</span>`).join(" ");
+
+/* por que me escolher */
+$("#why").innerHTML = C7.porque.map(([t,d],i) => `<li data-a="right" style="--d:${i*110}ms"><em>0${i+1}</em><div><strong>${t}</strong><p>${d}</p></div></li>`).join("");
+
+/* links */
 const cards = [
   ["Online", "Agendamento", "Escolha dia e horário", "agendamento", ICONS.agenda, "50% 30%"],
   ["@" + C7.instagram.replace(/^@/,""), "Instagram", "Cortes e bastidores", "instagram", ICONS.insta, "50% 18%"],
   ["Google", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "30% 70%"],
   ["Endereço", "Como chegar", "Abrir no mapa", "maps", ICONS.pin, "40% 92%"]
 ];
-$("#links").innerHTML = cards.map(([small,title,btn,key,ico,pos]) => `
-  <a class="link-card reveal" href="${links[key]}" target="_blank" rel="noopener">
+$("#links").innerHTML = cards.map(([small,title,btn,key,ico,pos],i) => `
+  <a class="link-card" data-a="wipe" style="--d:${i*90}ms" href="${links[key]}" target="_blank" rel="noopener">
     <img src="arthur.webp" alt="" style="object-position:${pos}" loading="lazy">
     <div class="lc"><small>${small}</small><strong>${title}</strong><span>${btn} ↗</span></div>
     <div class="ico">${ico}</div>
   </a>`).join("");
 
-/* Entrada suave das seções */
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
-document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+/* ---------- animações ao rolar ---------- */
+function countUp(el){
+  const target = el.dataset.count, num = parseFloat(target.replace(",", "."));
+  if(isNaN(num)) return;
+  const dec = target.includes(",") ? 1 : 0;
+  const from = dec ? 0 : Math.max(0, num - 25);
+  const t0 = performance.now(), dur = 1400;
+  const tick = now => {
+    const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = (from + (num - from) * e).toFixed(dec).replace(".", ",");
+    if(k < 1) requestAnimationFrame(tick); else el.textContent = target;
+  };
+  requestAnimationFrame(tick);
+}
+let pageStarted = false;
+const clipped = [];
+function startPage(){
+  if(pageStarted) return; pageStarted = true;
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if(!e.isIntersecting) return;
+    e.target.classList.add("in");
+    if(e.target.id === "stats") e.target.querySelectorAll("[data-count]").forEach(countUp);
+    io.unobserve(e.target);
+  }), {threshold:.18, rootMargin:"0px 0px -6% 0px"});
+  /* elementos recortados (wipe/rise) não disparam o observer: esses entram pela posição na rolagem */
+  document.querySelectorAll("[data-a],.split,[data-watch],.link-card").forEach(el => {
+    if(el.matches("[data-a=wipe],[data-a=rise]")) clipped.push(el); else io.observe(el);
+  });
+  $("#heroName").classList.add("in");
+  onScroll();
+}
+
+/* rolagem: paralaxe, linha da trajetória e frase acendendo */
+const heroPhoto = $("#heroPhoto"), timeline = $("#timeline"), statement = $("#statement");
+const quoteWords = [...document.querySelectorAll("#quote .w")];
+let ticking = false;
+function onScroll(){
+  if(ticking) return; ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    const vh = innerHeight, y = scrollY;
+    if(pageStarted) for(let i = clipped.length - 1; i >= 0; i--){
+      if(clipped[i].getBoundingClientRect().top < vh * 0.9){ clipped[i].classList.add("in"); clipped.splice(i, 1); }
+    }
+    heroPhoto.style.transform = `translateY(${y * 0.35}px) scale(${1 + Math.min(y, 600) / 3000})`;
+    document.querySelectorAll("[data-parallax]").forEach(img => {
+      const r = img.parentElement.getBoundingClientRect();
+      const k = (r.top + r.height/2 - vh/2) / vh;
+      img.style.transform = `translateY(${-k * parseFloat(img.dataset.parallax) * r.height}px)`;
+    });
+    const tr = timeline.getBoundingClientRect();
+    const tp = Math.min(1, Math.max(0, (vh * 0.7 - tr.top) / tr.height));
+    timeline.style.setProperty("--p", tp.toFixed(3));
+    const sr = statement.getBoundingClientRect();
+    const sp = Math.min(1, Math.max(0, (vh * 0.85 - sr.top) / (sr.height * 0.75)));
+    const lit = Math.round(sp * quoteWords.length);
+    quoteWords.forEach((w,i) => w.classList.toggle("on", i < lit));
+  });
+}
+addEventListener("scroll", onScroll, {passive:true});
+addEventListener("resize", onScroll);
 
 /* Barra fixa "Agendar" depois do topo */
 const sticky = $("#sticky");
-const hero = $(".hero");
 new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersecting && !document.body.classList.contains("intro-on")), {threshold:0}).observe($(".cta"));
 
 /* ================= ABERTURA (≈6,5s) =================
@@ -391,11 +565,12 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
     timers.forEach(clearTimeout);
     document.body.classList.remove("intro-on");
     const hl = document.querySelector(".hero-logo"); if(hl) hl.style.opacity = "";
+    startPage();
     try { sessionStorage.setItem("c7IntroSeen","1"); } catch {}
     box.animate([{opacity:1},{opacity:0}], {duration: fast ? 350 : 500, fill:"forwards"}).onfinish = () => box.remove();
   }
   $("#skip").addEventListener("click", () => finish(true));
-  if(seen){ box.remove(); document.body.classList.remove("intro-on"); return; }
+  if(seen){ box.remove(); document.body.classList.remove("intro-on"); startPage(); return; }
 
   const W = innerWidth, H = innerHeight;
   const C = {x: W/2, y: H*0.46};
@@ -562,6 +737,7 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
     scene.querySelectorAll(".dust").forEach(d => d.remove());
     document.body.classList.remove("intro-on");
     document.querySelector(".hero-logo").style.opacity = 0;
+    setTimeout(startPage, 350);
   });
   at(6450, () => {
     document.querySelector(".hero-logo").style.opacity = "";
