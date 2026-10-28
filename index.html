@@ -139,8 +139,8 @@ body.intro-on .hero-logo{opacity:0}
 .lead+.lead{margin-top:14px}
 .lead b{color:var(--gold-2);font-weight:500}
 
-.about-photo{position:relative;margin:30px -26px 0;height:300px;overflow:hidden}
-.about-photo img{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover;object-position:50% 12%;filter:grayscale(.25) contrast(1.05);will-change:transform}
+.about-photo{position:relative;margin:30px -26px 0;height:380px;overflow:hidden}
+.about-photo img{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover;object-position:50% 22%;filter:contrast(1.05) brightness(.9);will-change:transform}
 .about-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(11,10,9,0) 25%,rgba(11,10,9,0) 70%,var(--bg) 100%)}
 .about-photo figcaption{position:absolute;left:0;right:0;bottom:26px;z-index:2;text-align:center;font-family:var(--script);font-size:34px;color:var(--gold-2)}
 
@@ -159,7 +159,7 @@ body.intro-on .hero-logo{opacity:0}
 
 /* ---- frase em destaque sobre a foto ---- */
 .statement{position:relative;margin-top:50px;height:min(118vw,560px);overflow:hidden;display:grid;place-items:center;text-align:center;padding:0 30px}
-.statement img{position:absolute;left:0;top:-20%;width:100%;height:140%;object-fit:cover;object-position:30% 70%;filter:brightness(.32) grayscale(.3);will-change:transform}
+.statement img{position:absolute;left:0;top:-20%;width:100%;height:140%;object-fit:cover;object-position:50% 30%;filter:brightness(.34) grayscale(.2);will-change:transform}
 .statement::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),rgba(11,10,9,.15) 25%,rgba(11,10,9,.15) 75%,var(--bg));z-index:1}
 .statement blockquote{position:relative;z-index:2;font-family:var(--serif);font-style:italic;font-size:clamp(28px,8.4vw,38px);line-height:1.22;color:var(--text)}
 .statement blockquote .w{opacity:.14;transition:opacity .25s linear}
@@ -174,6 +174,14 @@ body.intro-on .hero-logo{opacity:0}
 .why strong{display:block;font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.2;color:var(--text)}
 .why p{font-size:13.5px;color:var(--muted);margin-top:3px}
 
+.gallery{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:170px;gap:8px;padding:0 18px}
+.gallery figure{position:relative;overflow:hidden;border-radius:4px;background:var(--card)}
+.gallery .g-tall{grid-row:span 2}
+.gallery .g-wide{grid-column:span 2}
+.gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.2);transition:transform 1.8s cubic-bezier(.2,.7,.2,1) var(--d)}
+.gallery figure.in img{transform:scale(1)}
+.gallery figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,10,9,.85))}
+.gallery figcaption{position:absolute;left:12px;bottom:10px;z-index:1;font-family:var(--script);font-size:24px;color:var(--gold-2)}
 .links{display:grid;gap:14px;padding:0 18px 10px}
 .link-card{position:relative;display:block;height:140px;border-radius:6px;overflow:hidden;background:var(--card);isolation:isolate}
 .link-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) brightness(.55);transform:scale(1.25);transition:transform 1.6s cubic-bezier(.2,.7,.2,1) var(--d),filter .4s ease;z-index:-2}
@@ -308,7 +316,7 @@ footer address{font-style:normal;margin-top:6px}
     <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
     <div id="about"></div>
     <figure class="about-photo" data-a="rise">
-      <img src="arthur.webp" alt="" data-parallax=".18">
+      <img src="navalha.webp" alt="Arthur fazendo a barba na navalha" data-parallax=".18">
       <figcaption data-a="blur" style="--d:500ms">tesoura, navalha e conversa</figcaption>
     </figure>
   </section>
@@ -321,7 +329,7 @@ footer address{font-style:normal;margin-top:6px}
   </section>
 
   <section class="statement" id="statement">
-    <img src="arthur.webp" alt="" data-parallax=".25">
+    <img src="navalha-vapor.webp" alt="" data-parallax=".25">
     <div>
       <blockquote id="quote"></blockquote>
       <cite data-a="up">— Arthur Braga</cite>
@@ -333,6 +341,18 @@ footer address{font-style:normal;margin-top:6px}
     <h2 class="script-title" data-a="wipe" style="--d:150ms">me escolher</h2>
     <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
     <ul class="why" id="why"></ul>
+  </section>
+
+  <section style="padding-top:40px">
+    <span class="eyebrow" data-a="up">meu</span>
+    <h2 class="script-title" data-a="wipe" style="--d:150ms">Trabalho</h2>
+    <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
+    <div class="gallery">
+      <figure class="g-tall" data-a="rise"><img src="corte.webp" alt="Degradê feito pelo Arthur" loading="lazy"><figcaption>Degradê</figcaption></figure>
+      <figure data-a="rise" style="--d:120ms"><img src="acabamento.webp" alt="Acabamento com secador" loading="lazy" style="object-position:50% 45%"><figcaption>Acabamento</figcaption></figure>
+      <figure data-a="rise" style="--d:240ms"><img src="navalha-vapor.webp" alt="Navalha com toalha quente" loading="lazy" style="object-position:50% 25%"><figcaption>Navalha</figcaption></figure>
+      <figure class="g-wide" data-a="rise" style="--d:120ms"><img src="navalha.webp" alt="Design de sobrancelha na navalha" loading="lazy" style="object-position:50% 40%"><figcaption>Detalhes</figcaption></figure>
+    </div>
   </section>
 
   <section style="padding-top:40px">
@@ -471,14 +491,14 @@ $("#why").innerHTML = C7.porque.map(([t,d],i) => `<li data-a="right" style="--d:
 
 /* links */
 const cards = [
-  ["Online", "Agendamento", "Escolha dia e horário", "agendamento", ICONS.agenda, "50% 30%"],
-  ["@" + C7.instagram.replace(/^@/,""), "Instagram", "Cortes e bastidores", "instagram", ICONS.insta, "50% 18%"],
-  ["Google · 4,9 ★", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "30% 70%"],
-  ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "40% 92%"]
+  ["Online", "Agendamento", "Escolha dia e horário", "agendamento", ICONS.agenda, "corte.webp", "50% 38%"],
+  ["@" + C7.instagram.replace(/^@/,""), "Instagram", "Cortes e bastidores", "instagram", ICONS.insta, "acabamento.webp", "50% 40%"],
+  ["Google · 4,9 ★", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "navalha-vapor.webp", "50% 22%"],
+  ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "arthur.webp", "40% 80%"]
 ];
-$("#links").innerHTML = cards.map(([small,title,btn,key,ico,pos],i) => `
+$("#links").innerHTML = cards.map(([small,title,btn,key,ico,img,pos],i) => `
   <a class="link-card" data-a="wipe" style="--d:${i*90}ms" href="${links[key]}" target="_blank" rel="noopener">
-    <img src="arthur.webp" alt="" style="object-position:${pos}" loading="lazy">
+    <img src="${img}" alt="" style="object-position:${pos}" loading="lazy">
     <div class="lc"><small>${small}</small><strong>${title}</strong><span>${btn} ↗</span></div>
     <div class="ico">${ico}</div>
   </a>`).join("");
