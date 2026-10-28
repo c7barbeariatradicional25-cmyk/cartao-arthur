@@ -194,6 +194,7 @@ body.intro-on .hero-logo{opacity:0}
 .reviews.in .stars svg:nth-child(2){transition-delay:.1s}.reviews.in .stars svg:nth-child(3){transition-delay:.2s}
 .reviews.in .stars svg:nth-child(4){transition-delay:.3s}.reviews.in .stars svg:nth-child(5){transition-delay:.4s}
 .reviews p{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+.reviews .score{display:block;font-family:var(--serif);font-weight:500;font-size:46px;line-height:1;color:var(--text);margin-bottom:6px}
 .reviews .btn{min-height:48px}
 .reviews .btn+.btn{margin-top:10px}
 
@@ -345,7 +346,7 @@ footer address{font-style:normal;margin-top:6px}
     <span class="eyebrow">clientes</span>
     <h2 class="script-title" style="font-size:44px">Avaliações</h2>
     <div class="stars" aria-label="5 estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg></div>
-    <p>Veja o que os clientes falam da C7 no Google — e, se já cortou com a gente, deixe a sua avaliação.</p>
+    <p><b class="score">4,9</b> de 5 com mais de 90 avaliações no Google. Veja o que os clientes falam — e, se já cortou com a gente, deixe a sua.</p>
     <a class="btn btn-gold" data-link="avaliacoes" target="_blank" rel="noopener">Ver avaliações no Google</a>
     <a class="btn btn-line" data-link="avaliar" target="_blank" rel="noopener">Deixar minha avaliação</a>
   </section>
@@ -373,18 +374,18 @@ footer address{font-style:normal;margin-top:6px}
 const C7 = {
   nome: "Arthur Braga",
   cargo: "Barbeiro e proprietário · C7 Barbearia Tradicional",
-  whatsapp: "5500000000000",                 // TROCAR: 55 + DDD + número, só dígitos
+  whatsapp: "5562992390887",                 // (62) 99239-0887 — WhatsApp da C7
   mensagemWhatsapp: "Olá, Arthur! Vim pelo seu cartão e quero agendar um horário.",
-  instagram: "c7barbeariatradicional",       // TROCAR: @ sem o arroba
+  instagram: "c7barbaeariatradicional",      // @ sem o arroba
   agendamento: "https://c7barbeariatradicional.com.br/",
-  avaliacoes: "https://www.google.com/search?q=C7+Barbearia+Tradicional",  // TROCAR: link do perfil no Google
-  avaliar: "",                                // TROCAR: link "Escrever avaliação" do Google (g.page/r/.../review)
-  maps: "https://www.google.com/maps/search/?api=1&query=C7+Barbearia+Tradicional",
-  endereco: "",                               // TROCAR: Rua, número — bairro, cidade
+  avaliacoes: "https://www.google.com/maps/search/?api=1&query=C7+Barbearia+Tradicional%2C+R.+C-64%2C+368+-+Setor+Sudoeste%2C+Goi%C3%A2nia+-+GO",
+  avaliar: "",                                // TROCAR (opcional): link "Pedir avaliações" do Perfil da Empresa no Google (g.page/r/.../review)
+  maps: "https://www.google.com/maps/dir/?api=1&destination=C7+Barbearia+Tradicional%2C+R.+C-64%2C+368+-+Setor+Sudoeste%2C+Goi%C3%A2nia+-+GO%2C+74305-430",
+  endereco: "R. C-64, 368 — Setor Sudoeste, Goiânia - GO, 74305-430",
   numeros: [                                  // número, texto (os números contam ao aparecer)
     ["2019", "barbearia própria desde"],
     ["2025", "à frente da C7"],
-    ["5,0", "no Google"]                      // TROCAR: nota real
+    ["4,9", "no Google"]
   ],
   sobre: [
     "Sou o <b>Arthur Braga</b>. Tenho barbearia própria desde <b>2019</b> e, em <b>2025</b>, assumi a C7 Barbearia Tradicional para levar o meu jeito de atender a um espaço com ainda mais estrutura.",
@@ -472,8 +473,8 @@ $("#why").innerHTML = C7.porque.map(([t,d],i) => `<li data-a="right" style="--d:
 const cards = [
   ["Online", "Agendamento", "Escolha dia e horário", "agendamento", ICONS.agenda, "50% 30%"],
   ["@" + C7.instagram.replace(/^@/,""), "Instagram", "Cortes e bastidores", "instagram", ICONS.insta, "50% 18%"],
-  ["Google", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "30% 70%"],
-  ["Endereço", "Como chegar", "Abrir no mapa", "maps", ICONS.pin, "40% 92%"]
+  ["Google · 4,9 ★", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "30% 70%"],
+  ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "40% 92%"]
 ];
 $("#links").innerHTML = cards.map(([small,title,btn,key,ico,pos],i) => `
   <a class="link-card" data-a="wipe" style="--d:${i*90}ms" href="${links[key]}" target="_blank" rel="noopener">
