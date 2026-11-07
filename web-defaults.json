@@ -139,7 +139,8 @@
       "E se tem algo que aprendi desde 2018, é que cada etapa tem seu valor, cada desafio traz um aprendizado e cada conquista é resultado de muito esforço.",
       "Essa é a minha história. Sou Arthur Braga, barbeiro por paixão, empreendedor por determinação e proprietário da C-7 Barbearia Tradicional.",
       "E essa história ainda tem muitos capítulos pela frente."
-    ]
+    ],
+    "whatsappLink": "https://wa.me/message/7AZPO5FSDTE3I1"
   },
   "instagram": {
     "title": "TUDO EM UM SÓ LUGAR.",
@@ -168,7 +169,7 @@
         "key": "WhatsApp",
         "label": "WHATSAPP",
         "description": "Fale com a equipe.",
-        "href": "https://wa.me/5562992390887",
+        "href": "https://wa.me/message/7AZPO5FSDTE3I1",
         "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/whatsapp.webp"
       },
       {
