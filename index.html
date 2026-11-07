@@ -159,17 +159,19 @@ body.intro-on .hero-logo{opacity:0}
 .about-photo figcaption{position:absolute;left:0;right:0;bottom:26px;z-index:2;text-align:center;font-family:var(--script);font-size:34px;color:var(--gold-2)}
 
 /* ---- trajetória ---- */
-.timeline{position:relative;margin:8px 0 0;padding:6px 0 6px}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
-.timeline .fill{position:absolute;left:50%;top:0;width:1px;height:100%;background:linear-gradient(var(--gold-2),var(--gold));transform-origin:top;transform:scaleY(var(--p,0));box-shadow:0 0 10px rgba(231,201,135,.5)}
-.milestone{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:18px 0}
-.milestone .dot{position:absolute;left:50%;top:30px;width:13px;height:13px;margin-left:-6px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);transform:scale(0);transition:transform .6s cubic-bezier(.3,1.6,.5,1) .2s,background .4s ease .5s}
+.history-link{margin-top:22px;letter-spacing:.08em;font-size:11px;padding:12px}
+.history-link:focus-visible{outline:2px solid var(--gold-2);outline-offset:4px}
+.timeline{position:relative;margin:8px 0 0;padding:6px 0}
+.timeline::before,.timeline .fill{position:absolute;left:7px;top:0;width:1px;height:100%}
+.timeline::before{content:"";background:var(--line)}
+.timeline .fill{background:linear-gradient(var(--gold-2),var(--gold));transform-origin:top;transform:scaleY(var(--p,0));box-shadow:0 0 10px rgba(231,201,135,.5)}
+.milestone{position:relative;padding:18px 0 20px 35px}
+.milestone .dot{position:absolute;left:7px;top:26px;width:11px;height:11px;margin-left:-5px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);transform:scale(0);transition:transform .6s ease,background .4s ease}
 .milestone.in .dot{transform:scale(1);background:var(--gold-2)}
-.milestone .year{font-family:var(--serif);font-size:44px;line-height:1;color:var(--gold-2);font-weight:500}
-.milestone h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;margin:4px 0 4px}
-.milestone p{font-size:13px;color:var(--muted);line-height:1.55}
-.milestone .side{grid-column:1;text-align:right}
-.milestone.flip .side{grid-column:2;text-align:left}
+.milestone .year{font:500 12px var(--sans);letter-spacing:.12em;line-height:1.5;color:var(--gold-2)}
+.milestone h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.15;margin:5px 0 6px}
+.milestone p{font-size:13px;color:var(--muted);line-height:1.65}
+.milestone .side{text-align:left}
 
 /* ---- frase em destaque sobre a foto ---- */
 .statement{position:relative;margin-top:50px;height:min(118vw,560px);overflow:hidden;display:grid;place-items:center;text-align:center;padding:0 30px}
@@ -333,7 +335,7 @@ footer address{font-style:normal;margin-top:6px}
     <span class="eyebrow" data-a="up">conheça</span>
     <h2 class="script-title" data-a="wipe" style="--d:150ms">Sobre mim</h2>
     <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
-    <div id="about"></div>
+    <div id="about"></div>\n    <a class="btn btn-line history-link" href="/historia/">Ler minha história completa <span aria-hidden="true">↗</span></a>
     <figure class="about-photo" data-a="rise">
       <img src="navalha.webp" alt="Arthur fazendo a barba na navalha" data-parallax=".18">
       <figcaption data-a="blur" style="--d:500ms">tesoura, navalha e conversa</figcaption>
@@ -427,18 +429,15 @@ const C7 = {
     ["2025", "à frente da C7"]
   ],
   sobre: [
-    "Sou <b>Arthur Braga</b>, barbeiro desde <b>2018</b>. Minha trajetória é feita de trabalho, aprendizado e amor pela profissão. Cada oportunidade me ajudou a evoluir e a construir minha identidade como barbeiro.",
-    "De colaborador a proprietário, transformei o sonho de ter meu próprio negócio em realidade. Hoje, à frente da <b>C7 Barbearia Tradicional</b>, dou continuidade à história de um lugar que também ajudou a construir a minha.",
-    "Minha especialidade une <b>cortes clássicos, com máquina tradicional e tesoura</b>, a <b>cortes modernos e técnicas de degradê</b>. Tradição, técnica e modernidade, respeitando o estilo e a personalidade de cada cliente.",
-    "Mais do que cortar cabelo, acredito em trabalhar com <b>autoestima, confiança e transformação</b>. Sou barbeiro por paixão e empreendedor por determinação. E essa história ainda tem muitos capítulos pela frente."
+    "Sou <b>Arthur Braga</b>, barbeiro desde <b>2018</b> e proprietário da <b>C7 Barbearia Tradicional</b>. De colaborador a empreendedor, construí minha história com dedicação e paixão pela profissão.",
+    "Uno <b>cortes clássicos e modernos</b> ao cuidado com cada detalhe, respeitando seu estilo e sua personalidade. Para mim, cada atendimento é uma oportunidade de renovar sua autoestima e confiança."
   ],
   trajetoria: [
-    ["2018", "O início da paixão", "Comecei minha trajetória como barbeiro, movido pela vontade de aprender e pelo amor à profissão."],
-    ["2019", "Bigs Barbearia", "Em fevereiro de 2019, tive minha primeira oportunidade na Bigs. Aperfeiçoei minhas técnicas, ganhei experiência e desenvolvi minha identidade profissional. Esse ciclo se encerrou em 16 de junho de 2022."],
-    ["2022", "Um novo capítulo na C7", "Depois da Bigs, passei a integrar a equipe da C-7 Barbearia Tradicional. Como colaborador, continuei evoluindo e conquistando a confiança dos clientes, até 16 de abril de 2024."],
-    ["2024", "Meu próprio negócio", "Em 17 de abril de 2024, inaugurei a Arthur Braga Barbearia. Um sonho construído com dedicação e coragem se tornou realidade: assumi o desafio de ser dono do meu próprio negócio."],
-    ["2025", "De colaborador a proprietário", "Em 29 de março de 2025, adquiri a C-7 Barbearia Tradicional. O lugar onde trabalhei como colaborador passou a fazer parte da minha história como empresário."],
-    ["Hoje", "A história continua", "Tenho orgulho de ser proprietário da C7, unindo tradição e modernidade em cada atendimento. Cada etapa tem seu valor, cada desafio traz um aprendizado e cada conquista é fruto de dedicação."]
+    ["2018", "Primeiros passos", "Início da minha trajetória como barbeiro."],
+    ["FEV 2019", "Bigs Barbearia", "Minha primeira oportunidade. Um ciclo de aprendizado encerrado em 16/06/2022."],
+    ["2022–2024", "Colaborador na C7", "Novos desafios e evolução profissional, até 16/04/2024."],
+    ["17 ABR 2024", "Arthur Braga Barbearia", "Inauguração da minha própria barbearia. O sonho de empreender se torna realidade."],
+    ["29 MAR 2025", "Proprietário da C7", "Adquiri a barbearia onde fui colaborador. Hoje, sigo construindo essa história."]
   ],
   frase: "De colaborador a proprietário. De um sonho a uma realidade.",
   fraseDestaque: ["proprietário.", "sonho", "realidade."],
@@ -503,9 +502,9 @@ document.querySelectorAll("#about .split").forEach(p => {
 $("#timeline").insertAdjacentHTML("beforeend", C7.trajetoria.map(([y,t,d]) => `
   <div class="milestone" data-watch>
     <i class="dot"></i>
-    <div class="side" data-a="${'left'}"><div class="year">${y}</div><h3>${t}</h3><p>${d}</p></div>
+    <div class="side" data-a="up"><div class="year">${y}</div><h3>${t}</h3><p>${d}</p></div>
   </div>`).join(""));
-document.querySelectorAll(".milestone").forEach((m,i) => { if(i%2===0){ m.classList.add("flip"); m.querySelector(".side").dataset.a = "right"; } });
+
 
 /* frase em destaque: acende palavra por palavra conforme a rolagem */
 $("#quote").innerHTML = C7.frase.split(" ").map(w => `<span class="w${C7.fraseDestaque.includes(w) ? " gold" : ""}">${w}</span>`).join(" ");
