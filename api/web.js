@@ -10,7 +10,7 @@ function validContent(page, data) {
   function check(value, shape, key) {
     if (typeof shape === 'string') {
       if (typeof value !== 'string' || value.length > 16000) throw fail(400,`Campo inválido: ${key}`);
-      if (['agendamento','avaliacoes','avaliar','maps','href','src'].includes(key) && value) {
+      if (['agendamento','avaliacoes','avaliar','maps','href','src','reviewUrl'].includes(key) && value) {
         const url = new URL(value, 'https://arthur.c7barbeariatradicional.com.br');
         if (!['https:','http:'].includes(url.protocol) || url.username || url.password) throw fail(400,'Link inválido.');
       }
@@ -73,6 +73,7 @@ module.exports=async function handler(req,res) {
       if(!rows?.length) throw fail(503,'Execute a configuração do banco de dados.');
       const saved=rows[0];
       const content=validContent(page,{...defaults[page],...saved.content});
+      if(page==='arthur' && !content.avaliar) content.avaliar=defaults.arthur.avaliar;
       const id=UUID.test(url.searchParams.get('session')||'')?url.searchParams.get('session'):crypto.randomUUID();
       return res.json({content,updated_at:saved.updated_at,session:issueSession(id)});
     }
