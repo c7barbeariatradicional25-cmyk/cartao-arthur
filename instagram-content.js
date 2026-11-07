@@ -6,6 +6,7 @@
   const set=(selector,text)=>{const el=document.querySelector(selector);if(el)el.textContent=text;};
   const background=(el,src,hero=false)=>{if(el)el.style.backgroundImage=`linear-gradient(180deg,rgba(0,0,0,.16),rgba(5,5,5,.88)),url(${JSON.stringify(src)})`;};
   set('.section-head h1',c.title);set('.section-head p',c.subtitle);set('.hero-tag',c.tagline);set('.about-grid h2',c.aboutTitle);set('.about-copy p',c.about);
+  document.querySelectorAll('.google-review').forEach(link=>link.href=c.reviewUrl||'https://g.page/r/CW99_r_eirhiEBM/review');
   document.querySelectorAll('.brand-logo').forEach(img=>img.src=c.logo);background(document.querySelector('.hero'),c.hero,true);
   for(const button of c.buttons){
    const card=[...document.querySelectorAll('.tile')].find(el=>el.dataset.name===button.key);if(!card)continue;
