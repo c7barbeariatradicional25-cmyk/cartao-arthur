@@ -418,6 +418,7 @@ const esc = value => { const el=document.createElement('span');el.textContent=St
 const C7 = {
   nome: "Arthur Braga",
   cargo: "Barbeiro e proprietário · C7 Barbearia Tradicional",
+  whatsappLink: "https://wa.me/message/7AZPO5FSDTE3I1",
   whatsapp: "5562992390887",                 // (62) 99239-0887 — WhatsApp da C7
   mensagemWhatsapp: "Olá, Arthur! Vim pelo seu cartão e quero agendar um horário.",
   instagram: "c7barbeariatradicional",       // @ sem o arroba
@@ -466,7 +467,7 @@ const ICONS = {
 };
 const links = {
   agendamento: C7.agendamento,
-  whatsapp: `https://wa.me/${C7.whatsapp.replace(/\D/g,"")}?text=${encodeURIComponent(C7.mensagemWhatsapp)}`,
+  whatsapp: C7.whatsappLink || "https://wa.me/message/7AZPO5FSDTE3I1",
   instagram: `https://instagram.com/${C7.instagram.replace(/^@/,"")}`,
   avaliacoes: C7.avaliacoes,
   avaliar: C7.avaliar || "https://g.page/r/CW99_r_eirhiEBM/review",
