@@ -10,7 +10,7 @@ function validContent(page, data) {
   function check(value, shape, key) {
     if (typeof shape === 'string') {
       if (typeof value !== 'string' || value.length > 16000) throw fail(400,`Campo inválido: ${key}`);
-      if (['agendamento','avaliacoes','avaliar','maps','href','src','reviewUrl'].includes(key) && value) {
+      if (['agendamento','avaliacoes','avaliar','maps','href','src','reviewUrl','whatsappLink'].includes(key) && value) {
         const url = new URL(value, 'https://arthur.c7barbeariatradicional.com.br');
         if (!['https:','http:'].includes(url.protocol) || url.username || url.password) throw fail(400,'Link inválido.');
       }
@@ -23,7 +23,11 @@ function validContent(page, data) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) throw fail(400,`Grupo inválido: ${key}`);
     return Object.fromEntries(Object.entries(shape).map(([k,v])=>[k,check(value[k] === undefined ? v : value[k],v,k)]));
   }
-  return check(data, template, page);
+  const checked=check(data, template, page);
+  if(page==='instagram') for(const button of checked.buttons) {
+    if(button.key==='WhatsApp' && /^https:\/\/wa\.me\/5562992390887(?:\?|$)/.test(button.href)) button.href=defaults.arthur.whatsappLink;
+  }
+  return checked;
 }
 async function db(path, opts={}, token) {
   const key=process.env.C7_WEB_SUPABASE_SECRET;
