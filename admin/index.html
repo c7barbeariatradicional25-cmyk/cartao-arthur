@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0b0a09">
+<title>Painel C7 · Arthur Braga</title><link rel="icon" href="/logo.webp">
+<link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+<div class="shell">
+<header class="top"><a href="/" class="brand"><img src="/logo.webp" alt="C7"><span>Painel C7<small>Cartão e link do Instagram</small></span></a><button id="logout" class="quiet" hidden>Sair</button></header>
+<div id="notice" role="status" aria-live="polite" hidden></div>
+<section id="login" class="login panel">
+<span class="eyebrow">ÁREA RESTRITA</span><h1>Seu cartão.<br>Do seu jeito.</h1><p>Edite suas páginas e acompanhe os resultados em um só lugar.</p>
+<form id="loginForm"><label>E-mail<input name="email" type="email" autocomplete="username" required></label><label>Senha<input name="password" type="password" autocomplete="current-password" required></label><button class="primary" type="submit">Entrar no painel</button></form>
+<small>Use sua conta da C7 autorizada para este painel.</small>
+</section>
+<main id="app" hidden>
+<div class="heading"><div><span class="eyebrow">SUA PRESENÇA DIGITAL</span><h1>Visão geral</h1><p id="account"></p></div><a id="openPage" class="quiet" href="/" target="_blank" rel="noopener">Abrir página ↗</a></div>
+<div class="toolbar"><label>Página<select id="page"><option value="arthur">Cartão do Arthur</option><option value="instagram">Link do Instagram · C7</option></select></label><label>Período<select id="days"><option value="1">Hoje</option><option value="7">Últimos 7 dias</option><option value="30" selected>Últimos 30 dias</option><option value="90">Últimos 90 dias</option></select></label></div>
+<nav class="tabs" aria-label="Seções do painel"><button id="metricsTab" class="active" type="button">Resultados</button><button id="editorTab" type="button">Editar página</button></nav>
+<section id="metrics"><div class="stats"><article><span>Visitas</span><strong id="views">—</strong></article><article><span>Sessões</span><strong id="sessions">—</strong></article><article><span>Cliques nos links</span><strong id="clicks">—</strong></article></div><p class="hint">Uma sessão representa uma navegação no navegador, não uma pessoa identificada. Os dados começam a ser registrados após a ativação.</p><div class="panel"><h2>Visitas por dia</h2><div id="daily" class="daily"></div></div><div class="columns"><div class="panel"><h2>Links mais acessados</h2><div id="ranking"></div></div><div class="panel"><h2>Origem dos acessos</h2><div id="sources"></div><h2 class="spaced">Dispositivos</h2><div id="devices"></div></div></div><button id="refresh" class="quiet">Atualizar resultados</button></section>
+<section id="editor" hidden><div class="panel intro"><h2>Edite sua página</h2><p>Abra um grupo abaixo para alterar textos, links ou fotos. As alterações só aparecem para os visitantes depois de salvar.</p></div><form id="editForm"><div id="fields"></div><div class="savebar"><span id="saveState">Nenhuma alteração pendente</span><button type="submit" class="primary">Salvar alterações</button></div></form></section>
+</main><footer>HM Digital · Painel C7</footer>
+</div><script src="/admin/app.js" defer></script>
+</body></html>

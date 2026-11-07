@@ -335,7 +335,8 @@ footer address{font-style:normal;margin-top:6px}
     <span class="eyebrow" data-a="up">conheça</span>
     <h2 class="script-title" data-a="wipe" style="--d:150ms">Sobre mim</h2>
     <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
-    <div id="about"></div>\n    <a class="btn btn-line history-link" href="/historia/">Ler minha história completa <span aria-hidden="true">↗</span></a>
+    <div id="about"></div>
+    <a class="btn btn-line history-link" href="/historia/">Ler minha história completa <span aria-hidden="true">↗</span></a>
     <figure class="about-photo" data-a="rise">
       <img src="navalha.webp" alt="Arthur fazendo a barba na navalha" data-parallax=".18">
       <figcaption data-a="blur" style="--d:500ms">tesoura, navalha e conversa</figcaption>
@@ -409,6 +410,8 @@ footer address{font-style:normal;margin-top:6px}
 </div>
 
 <script>
+(async function(){
+const esc = value => { const el=document.createElement('span');el.textContent=String(value);return el.innerHTML.replaceAll('"','&quot;').replaceAll("'",'&#39;'); };
 /* =====================================================================
    DADOS DO CARTÃO — troque aqui (tudo que está com TROCAR)
    ===================================================================== */
@@ -449,6 +452,10 @@ const C7 = {
   ]
 };
 
+try {
+  const response=await fetch('/api/web?action=page&page=arthur',{signal:AbortSignal.timeout(4000)});
+  if(response.ok) {const saved=await response.json();Object.assign(C7,saved.content);}
+} catch {}
 /* ===================================================================== */
 const $ = s => document.querySelector(s);
 const ICONS = {
@@ -473,15 +480,15 @@ $("#year").textContent = new Date().getFullYear();
 /* nome: letra por letra, em duas linhas */
 { const [first, ...rest] = C7.nome.split(" ");
   let i = 0;
-  const row = word => `<span class="row">${[...word].map(ch => `<span class="l" style="--d:${250 + (i++)*55}ms">${ch}</span>`).join("")}</span>`;
+  const row = word => `<span class="row">${[...word].map(ch => `<span class="l" style="--d:${250 + (i++)*55}ms">${esc(ch)}</span>`).join("")}</span>`;
   $("#heroName").innerHTML = row(first) + (rest.length ? row(rest.join(" ")) : ""); }
 
 /* números */
-$("#stats").innerHTML = C7.numeros.map(([n,l],i) => `<div data-a="up" style="--d:${i*120}ms"><strong data-count="${n}">${n}</strong><span>${l}</span></div>`).join("");
+$("#stats").innerHTML = C7.numeros.map(([rawN,rawL],i) => { const n=esc(rawN),l=esc(rawL);return `<div data-a="up" style="--d:${i*120}ms"><strong data-count="${n}">${n}</strong><span>${l}</span></div>`; }).join("");
 if(!C7.numeros.length) $("#stats").hidden = true;
 
 /* sobre: palavra por palavra */
-$("#about").innerHTML = C7.sobre.map(p => `<p class="lead split">${p}</p>`).join("");
+$("#about").innerHTML = C7.sobre.map(p => `<p class="lead split">${esc(p).replaceAll('&lt;b&gt;','<b>').replaceAll('&lt;/b&gt;','</b>')}</p>`).join("");
 document.querySelectorAll("#about .split").forEach(p => {
   let i = 0;
   const walk = node => [...node.childNodes].forEach(n => {
@@ -499,18 +506,18 @@ document.querySelectorAll("#about .split").forEach(p => {
 });
 
 /* trajetória */
-$("#timeline").insertAdjacentHTML("beforeend", C7.trajetoria.map(([y,t,d]) => `
+$("#timeline").insertAdjacentHTML("beforeend", C7.trajetoria.map(([a,b,c]) => {const [y,t,d]=[a,b,c].map(esc);return `
   <div class="milestone" data-watch>
     <i class="dot"></i>
     <div class="side" data-a="up"><div class="year">${y}</div><h3>${t}</h3><p>${d}</p></div>
-  </div>`).join(""));
+  </div>`; }).join(""));
 
 
 /* frase em destaque: acende palavra por palavra conforme a rolagem */
-$("#quote").innerHTML = C7.frase.split(" ").map(w => `<span class="w${C7.fraseDestaque.includes(w) ? " gold" : ""}">${w}</span>`).join(" ");
+$("#quote").innerHTML = C7.frase.split(" ").map(w => `<span class="w${C7.fraseDestaque.includes(w) ? " gold" : ""}">${esc(w)}</span>`).join(" ");
 
 /* por que me escolher */
-$("#why").innerHTML = C7.porque.map(([t,d],i) => `<li data-a="right" style="--d:${i*110}ms"><em>0${i+1}</em><div><strong>${t}</strong><p>${d}</p></div></li>`).join("");
+$("#why").innerHTML = C7.porque.map(([t,d],i) => `<li data-a="right" style="--d:${i*110}ms"><em>0${i+1}</em><div><strong>${esc(t)}</strong><p>${esc(d)}</p></div></li>`).join("");
 
 /* links */
 const cards = [
@@ -520,12 +527,19 @@ const cards = [
   ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "fachada.webp", "70% 45%"]
 ];
 $("#links").innerHTML = cards.map(([small,title,btn,key,ico,img,pos],i) => `
-  <a class="link-card${img === "fachada.webp" ? " facade" : ""}" data-a="wipe" style="--d:${i*90}ms" href="${links[key]}" target="_blank" rel="noopener">
+  <a class="link-card${img === "fachada.webp" ? " facade" : ""}" data-a="wipe" style="--d:${i*90}ms" href="${esc(links[key])}" target="_blank" rel="noopener">
     <img src="${img}" alt="" style="object-position:${pos}" loading="lazy">
-    <div class="lc"><small>${small}</small><strong>${title}</strong><span>${btn} ↗</span></div>
+    <div class="lc"><small>${esc(small)}</small><strong>${esc(title)}</strong><span>${esc(btn)} ↗</span></div>
     <div class="ico">${ico}</div>
   </a>`).join("");
 
+for(const photo of C7.photos||[]) {
+  for(const img of document.querySelectorAll('img')) {
+    if(img.getAttribute('src')===photo.key) {img.src=photo.src;img.style.objectPosition=photo.position;}
+  }
+}
+document.querySelector('footer strong').textContent=C7.nome;
+document.querySelector('#introTag').textContent=C7.nome;
 /* ---------- animações ao rolar ---------- */
 function countUp(el){
   const target = el.dataset.count, num = parseFloat(target.replace(",", "."));
@@ -788,6 +802,8 @@ new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersect
     finish();
   });
 })();
+})();
 </script>
+<script src="/web-tracking.js" data-page="arthur" defer></script>
 </body>
 </html>

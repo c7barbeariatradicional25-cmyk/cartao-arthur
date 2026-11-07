@@ -1,0 +1,197 @@
+{
+  "arthur": {
+    "nome": "Arthur Braga",
+    "cargo": "Barbeiro e proprietário · C7 Barbearia Tradicional",
+    "whatsapp": "5562992390887",
+    "mensagemWhatsapp": "Olá, Arthur! Vim pelo seu cartão e quero agendar um horário.",
+    "instagram": "c7barbeariatradicional",
+    "agendamento": "https://c7barbeariatradicional.com.br/",
+    "avaliacoes": "https://www.google.com/maps/search/?api=1&query=C7+Barbearia+Tradicional%2C+R.+C-64%2C+368+-+Setor+Sudoeste%2C+Goi%C3%A2nia+-+GO",
+    "avaliar": "",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=C7+Barbearia+Tradicional%2C+R.+C-64%2C+368+-+Setor+Sudoeste%2C+Goi%C3%A2nia+-+GO%2C+74305-430",
+    "endereco": "R. C-64, 368 — Setor Sudoeste, Goiânia - GO, 74305-430",
+    "numeros": [
+      [
+        "2018",
+        "barbeiro desde"
+      ],
+      [
+        "2024",
+        "empreendedor desde"
+      ],
+      [
+        "2025",
+        "à frente da C7"
+      ]
+    ],
+    "sobre": [
+      "Sou <b>Arthur Braga</b>, barbeiro desde <b>2018</b> e proprietário da <b>C7 Barbearia Tradicional</b>. De colaborador a empreendedor, construí minha história com dedicação e paixão pela profissão.",
+      "Uno <b>cortes clássicos e modernos</b> ao cuidado com cada detalhe, respeitando seu estilo e sua personalidade. Para mim, cada atendimento é uma oportunidade de renovar sua autoestima e confiança."
+    ],
+    "trajetoria": [
+      [
+        "2018",
+        "Primeiros passos",
+        "Início da minha trajetória como barbeiro."
+      ],
+      [
+        "FEV 2019",
+        "Bigs Barbearia",
+        "Minha primeira oportunidade. Um ciclo de aprendizado encerrado em 16/06/2022."
+      ],
+      [
+        "2022–2024",
+        "Colaborador na C7",
+        "Novos desafios e evolução profissional, até 16/04/2024."
+      ],
+      [
+        "17 ABR 2024",
+        "Arthur Braga Barbearia",
+        "Inauguração da minha própria barbearia. O sonho de empreender se torna realidade."
+      ],
+      [
+        "29 MAR 2025",
+        "Proprietário da C7",
+        "Adquiri a barbearia onde fui colaborador. Hoje, sigo construindo essa história."
+      ]
+    ],
+    "frase": "De colaborador a proprietário. De um sonho a uma realidade.",
+    "fraseDestaque": [
+      "proprietário.",
+      "sonho",
+      "realidade."
+    ],
+    "porque": [
+      [
+        "Técnica tradicional",
+        "Tesoura e navalha no acabamento, do jeito que barbearia de verdade faz."
+      ],
+      [
+        "Hora marcada de verdade",
+        "Você agenda pelo app e é atendido no seu horário, sem fila."
+      ],
+      [
+        "Atenção aos detalhes",
+        "Do degradê à barba alinhada, cada detalhe é conferido antes de você levantar."
+      ],
+      [
+        "Clube C7",
+        "Clientes frequentes sobem de nível (Prata, Ouro e VIP) e ganham benefícios em serviços."
+      ]
+    ],
+    "photos": [
+      {
+        "key": "arthur.webp",
+        "label": "Foto principal",
+        "src": "https://arthur.c7barbeariatradicional.com.br/arthur.webp",
+        "position": "52% 22%"
+      },
+      {
+        "key": "navalha.webp",
+        "label": "Sobre mim e detalhes",
+        "src": "https://arthur.c7barbeariatradicional.com.br/navalha.webp",
+        "position": "50% 22%"
+      },
+      {
+        "key": "navalha-vapor.webp",
+        "label": "Frase e navalha",
+        "src": "https://arthur.c7barbeariatradicional.com.br/navalha-vapor.webp",
+        "position": "50% 30%"
+      },
+      {
+        "key": "corte.webp",
+        "label": "Corte e agendamento",
+        "src": "https://arthur.c7barbeariatradicional.com.br/corte.webp",
+        "position": "50% 38%"
+      },
+      {
+        "key": "acabamento.webp",
+        "label": "Acabamento e Instagram",
+        "src": "https://arthur.c7barbeariatradicional.com.br/acabamento.webp",
+        "position": "50% 40%"
+      },
+      {
+        "key": "fachada.webp",
+        "label": "Fachada",
+        "src": "https://arthur.c7barbeariatradicional.com.br/fachada.webp",
+        "position": "70% 45%"
+      },
+      {
+        "key": "logo.webp",
+        "label": "Logo C7",
+        "src": "https://arthur.c7barbeariatradicional.com.br/logo.webp",
+        "position": "50% 50%"
+      }
+    ],
+    "story": [
+      "Meu nome é Arthur Braga, sou barbeiro desde 2018 e minha trajetória na barbearia é marcada por muito trabalho, aprendizado, dedicação e, acima de tudo, amor pela profissão.",
+      "Minha jornada profissional começou a ganhar forma em fevereiro de 2019, quando tive minha primeira oportunidade na Bigs Barbearia. Foi lá que construí uma base importante para minha carreira, aperfeiçoando minhas técnicas, adquirindo experiência e desenvolvendo minha identidade como barbeiro. Foram 3 anos e 5 meses de muito aprendizado, até encerrar esse ciclo em 16 de junho de 2022.",
+      "Em busca de novos desafios e crescimento profissional, dei mais um passo na minha trajetória e passei a fazer parte da equipe da C-7 Barbearia Tradicional, onde atuei como colaborador até 16 de abril de 2024. Durante esse período, continuei evoluindo, conquistando a confiança dos clientes e fortalecendo ainda mais minha paixão pela barbearia.",
+      "Mas eu tinha um sonho ainda maior: ter meu próprio negócio e construir minha história como empreendedor.",
+      "Foi então que, em 17 de abril de 2024, realizei uma das maiores conquistas da minha vida profissional: inaugurei a Arthur Braga Barbearia. Um projeto que nasceu de anos de dedicação, coragem e vontade de crescer. Ali, deixei de ser apenas colaborador para assumir o desafio de ser dono do meu próprio negócio.",
+      "E a vida ainda reservava mais um capítulo especial para essa história.",
+      "Em 29 de março de 2025, surgiu a oportunidade de adquirir a C-7 Barbearia Tradicional, justamente a barbearia onde eu havia trabalhado como colaborador. O lugar que antes fez parte do meu crescimento profissional passou a fazer parte da minha história como empresário.",
+      "De colaborador a proprietário. De um sonho a uma realidade.",
+      "Hoje, tenho o orgulho de ser proprietário da C-7 Barbearia Tradicional, dando continuidade a uma história que também ajudou a construir a minha.",
+      "Ao longo desses anos, desenvolvi minhas especialidades tanto nos cortes clássicos, utilizando máquina tradicional e tesoura, quanto nos cortes modernos, com técnicas de degradê e estilos que acompanham as tendências da atualidade. Meu compromisso é unir tradição, técnica e modernidade, sempre respeitando o estilo e a personalidade de cada cliente.",
+      "Mais do que realizar cortes de cabelo, acredito que ser barbeiro é trabalhar com autoestima, confiança e transformação.",
+      "Minha trajetória começou com uma oportunidade, cresceu com dedicação e hoje é construída com a realização de sonhos.",
+      "E se tem algo que aprendi desde 2018, é que cada etapa tem seu valor, cada desafio traz um aprendizado e cada conquista é resultado de muito esforço.",
+      "Essa é a minha história. Sou Arthur Braga, barbeiro por paixão, empreendedor por determinação e proprietário da C-7 Barbearia Tradicional.",
+      "E essa história ainda tem muitos capítulos pela frente."
+    ]
+  },
+  "instagram": {
+    "title": "TUDO EM UM SÓ LUGAR.",
+    "subtitle": "Escolha o que você precisa e acesse direto.",
+    "tagline": "CORTE • BARBA • TRADIÇÃO",
+    "aboutTitle": "TRADIÇÃO NO CORTE. IDENTIDADE EM CADA DETALHE.",
+    "about": "Mais do que cortar cabelo e fazer barba, a C7 entrega atendimento, estilo e uma experiência pensada em cada detalhe.",
+    "logo": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/logos/logo-c7.png.png",
+    "hero": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/hero.webp",
+    "buttons": [
+      {
+        "key": "Agendamento",
+        "label": "AGENDAR HORÁRIO",
+        "description": "Dia, horário e profissional.",
+        "href": "https://booksy.com/pt-br/instant-experiences/widget/129803?instant_experiences_enabled=true&ig_ix=true&is_fb=1&utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=1344207247310791_v2_s02_e1002&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAacYdLRKYl6lFYSUoS2syf4LGoz-lj35iz_Of9fWj-dL8Xd-lR5HooKL8ia5iQ_aem_JPq53RKWCwDliJ0v2n0XYw",
+        "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/agendamento.webp"
+      },
+      {
+        "key": "Serviços",
+        "label": "SERVIÇOS",
+        "description": "Conheça a experiência C7.",
+        "href": "servicos.html",
+        "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/servicos.webp"
+      },
+      {
+        "key": "WhatsApp",
+        "label": "WHATSAPP",
+        "description": "Fale com a equipe.",
+        "href": "https://wa.me/5562992390887",
+        "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/whatsapp.webp"
+      },
+      {
+        "key": "Como chegar",
+        "label": "COMO CHEGAR",
+        "description": "Abra a rota até a C7.",
+        "href": "https://maps.app.goo.gl/1eTpk66YeQ2WXMjv7",
+        "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/como-chegar.webp"
+      },
+      {
+        "key": "Produtos",
+        "label": "PRODUTOS",
+        "description": "Cuidados para seu estilo.",
+        "href": "produtos.html",
+        "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/produtos.webp"
+      },
+      {
+        "key": "Sobre nós",
+        "label": "SOBRE NÓS",
+        "description": "Tradição, identidade e qualidade.",
+        "href": "#sobre",
+        "src": "https://cjtgjqxkyvgjlhylrvas.supabase.co/storage/v1/object/public/c7-assets/site/sobre-nos.webp"
+      }
+    ]
+  }
+}
