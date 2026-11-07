@@ -10,9 +10,10 @@
   document.querySelectorAll('.brand-logo').forEach(img=>img.src=c.logo);background(document.querySelector('.hero'),c.hero,true);
   for(const button of c.buttons){
    const card=[...document.querySelectorAll('.tile')].find(el=>el.dataset.name===button.key);if(!card)continue;
-   card.href=button.href;const title=card.querySelector('strong'),desc=card.querySelector('small');if(title)title.textContent=button.label;if(desc)desc.textContent=button.description;background(card,button.src);
+   const href=button.key==='WhatsApp' && /^https:\/\/wa\.me\/5562992390887(?:\?|$)/.test(button.href)?'https://wa.me/message/7AZPO5FSDTE3I1':button.href;
+   card.href=href;if(button.key==='WhatsApp')card.target='_self';const title=card.querySelector('strong'),desc=card.querySelector('small');if(title)title.textContent=button.label;if(desc)desc.textContent=button.description;background(card,button.src);
    if(button.key==='Agendamento'){const cta=document.querySelector('.hero-cta');if(cta)cta.href=button.href;}
-   if(button.key==='WhatsApp'){const link=document.querySelector('.about-actions a:first-child');if(link)link.href=button.href;}
+   if(button.key==='WhatsApp'){const link=document.querySelector('.about-actions a:first-child');if(link){link.href=href;link.target='_self';}}
    if(button.key==='Como chegar'){const link=document.querySelector('.about-actions a:last-child');if(link)link.href=button.href;}
   }
  }catch{}
