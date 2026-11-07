@@ -423,7 +423,7 @@ const C7 = {
   instagram: "c7barbeariatradicional",       // @ sem o arroba
   agendamento: "https://c7barbeariatradicional.com.br/",
   avaliacoes: "https://www.google.com/maps/search/?api=1&query=C7+Barbearia+Tradicional%2C+R.+C-64%2C+368+-+Setor+Sudoeste%2C+Goi%C3%A2nia+-+GO",
-  avaliar: "",                                // TROCAR (opcional): link "Pedir avaliações" do Perfil da Empresa no Google (g.page/r/.../review)
+  avaliar: "https://g.page/r/CW99_r_eirhiEBM/review",                                // TROCAR (opcional): link "Pedir avaliações" do Perfil da Empresa no Google (g.page/r/.../review)
   maps: "https://www.google.com/maps/dir/?api=1&destination=C7+Barbearia+Tradicional%2C+R.+C-64%2C+368+-+Setor+Sudoeste%2C+Goi%C3%A2nia+-+GO%2C+74305-430",
   endereco: "R. C-64, 368 — Setor Sudoeste, Goiânia - GO, 74305-430",
   numeros: [
@@ -469,7 +469,7 @@ const links = {
   whatsapp: `https://wa.me/${C7.whatsapp.replace(/\D/g,"")}?text=${encodeURIComponent(C7.mensagemWhatsapp)}`,
   instagram: `https://instagram.com/${C7.instagram.replace(/^@/,"")}`,
   avaliacoes: C7.avaliacoes,
-  avaliar: C7.avaliar || C7.avaliacoes,
+  avaliar: C7.avaliar || "https://g.page/r/CW99_r_eirhiEBM/review",
   maps: C7.maps
 };
 
