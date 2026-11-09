@@ -248,6 +248,16 @@ footer address{font-style:normal;margin-top:6px}
   .statement blockquote .w{opacity:1}
   .stars svg,.milestone .dot{transform:none}
 }
+.hero{height:min(90vw,420px)}
+.cta{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:12px}
+.cta .btn{padding:8px;letter-spacing:.06em;text-align:center;line-height:1.25}
+.cta .cta-whatsapp{grid-column:1/-1}
+.top-links{gap:8px;padding:0 22px 16px}
+.top-links .link-card{height:76px}
+.top-links .link-card .lc{top:50%;bottom:auto;transform:translateY(-50%)}
+.top-links .link-card .ico{top:50%;bottom:auto;transform:translateY(-50%);width:34px;height:34px}
+.top-links .link-card strong{font-size:22px}
+.top-links .link-card .lc span{display:none}
 </style>
 </head>
 <body class="intro-on">
@@ -318,18 +328,21 @@ footer address{font-style:normal;margin-top:6px}
     </div>
   </header>
 
-  <div class="stats" id="stats" data-watch></div>
-
-  <div class="cta">
+  <div class="cta" role="group" aria-label="Ações principais">
     <a class="btn btn-gold" data-a="up" style="--d:100ms" data-link="agendamento" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-      Agendar meu horário
+      Agendar horário
     </a>
-    <a class="btn btn-line" data-a="up" style="--d:220ms" data-link="whatsapp" target="_blank" rel="noopener">
+    <a class="btn btn-line" href="https://g.page/r/CW99_r_eirhiEBM/review" data-link="avaliar" target="_blank" rel="noopener">Avaliar no Google</a>
+    <a class="btn btn-line cta-whatsapp" data-a="up" style="--d:220ms" data-link="whatsapp" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.2-.3Z"/></svg>
       Falar no WhatsApp
     </a>
   </div>
+
+  <nav class="links top-links" id="links" aria-label="Mais links do Arthur"></nav>
+
+  <div class="stats" id="stats" data-watch></div>
 
   <section class="section">
     <span class="eyebrow" data-a="up">conheça</span>
@@ -377,12 +390,7 @@ footer address{font-style:normal;margin-top:6px}
     </div>
   </section>
 
-  <section style="padding-top:40px">
-    <span class="eyebrow" data-a="up">acesse</span>
-    <h2 class="script-title" data-a="wipe" style="--d:150ms">Meus links</h2>
-    <i class="title-rule" data-a="line" style="--d:400ms;transform-origin:center"></i>
-    <nav class="links" id="links"></nav>
-  </section>
+
 
   <section class="reviews" data-a="up">
     <span class="eyebrow">clientes</span>
@@ -390,7 +398,6 @@ footer address{font-style:normal;margin-top:6px}
     <div class="stars" aria-label="5 estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7.2.7-5.4 4.8 1.6 7.1L12 17.5 5.6 21.2l1.6-7.1L1.8 9.3 9 8.6Z"/></svg></div>
     <p><b class="score">4,9</b> de 5 com mais de 90 avaliações no Google. Veja o que os clientes falam — e, se já cortou com a gente, deixe a sua.</p>
     <a class="btn btn-gold" data-link="avaliacoes" target="_blank" rel="noopener">Ver avaliações no Google</a>
-    <a class="btn btn-line" data-link="avaliar" target="_blank" rel="noopener">Deixar minha avaliação</a>
   </section>
 
   <footer>
@@ -522,7 +529,6 @@ $("#why").innerHTML = C7.porque.map(([t,d],i) => `<li data-a="right" style="--d:
 
 /* links */
 const cards = [
-  ["Online", "Agendamento", "Escolha dia e horário", "agendamento", ICONS.agenda, "corte.webp", "50% 38%"],
   ["@" + C7.instagram.replace(/^@/,""), "Instagram", "Cortes e bastidores", "instagram", ICONS.insta, "acabamento.webp", "50% 40%"],
   ["Google · 4,9 ★", "Avaliações", "O que dizem da C7", "avaliacoes", ICONS.star, "navalha-vapor.webp", "50% 22%"],
   ["Setor Sudoeste · Goiânia", "Como chegar", "Abrir rota no mapa", "maps", ICONS.pin, "fachada.webp", "70% 45%"]
