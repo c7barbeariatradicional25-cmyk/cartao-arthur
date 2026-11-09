@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo de cortes | Arthur Braga · C7 Barbearia</title>
+<meta name="description" content="Explore referências de cortes masculinos e conheça o trabalho do Arthur na C7 Barbearia Tradicional.">
+<link rel="icon" href="/logo.webp">
+<meta name="theme-color" content="#151310">
+<style>
+:root{color-scheme:dark;--bg:#151310;--panel:#201d18;--gold:#e0bd79;--text:#f5efe3;--muted:#c4b9a9;--line:#655235}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,sans-serif}
+[hidden]{display:none!important}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.wrap{max-width:1000px;margin:auto;padding-inline:clamp(16px,4vw,42px)}
+header{border-bottom:1px solid var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-block:12px}
+.bar img{display:block;width:68px;height:52px;object-fit:contain}
+.back{font-size:.9rem;text-underline-offset:4px}
+.intro{padding-block:clamp(36px,8vw,80px) 28px}
+.kicker{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;font-weight:700;margin:0 0 8px}
+h1,h2,h3{font-family:Georgia,serif;line-height:1.12;margin:0}
+h1{font-size:clamp(2.6rem,7vw,5rem);letter-spacing:-.045em}
+h2{font-size:clamp(1.6rem,4vw,2.6rem)}
+h3{font-size:clamp(1.06rem,2.5vw,1.45rem)}
+p{margin:0}
+.lead{max-width:550px;color:var(--muted);margin:14px 0 22px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:5px;text-decoration:none;font-weight:650}
+.primary{background:var(--gold);border-color:var(--gold);color:#1b160e}
+section{margin-bottom:48px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.filters button{font:inherit;font-size:.84rem;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:100px;padding:8px 12px;min-height:42px;cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--gold);color:#1b160e;border-color:var(--gold)}
+.note{color:var(--muted);font-size:.83rem;margin:10px 0 15px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+.style{background:var(--panel);border:1px solid #4c4031;border-radius:8px;overflow:hidden}
+.portrait{aspect-ratio:1;background:#2c2823 url('./referencias.webp') no-repeat;background-size:300% 300%;background-position:var(--x) var(--y)}
+.copy{padding:clamp(10px,2vw,18px)}
+.copy p{color:var(--muted);font-size:.86rem;margin-top:7px}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+figure{margin:0}
+.work img{display:block;width:100%;height:auto;border-radius:8px}
+figcaption{color:var(--muted);font-size:.85rem;margin-top:7px}
+footer{padding-block:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.87rem}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a href="/" aria-label="Cartão do Arthur"><img src="/logo.webp" alt="C7 Barbearia Tradicional"></a><a class="back" href="/">← Voltar ao cartão</a></div></header>
+<main class="wrap">
+<div class="intro">
+<p class="kicker">Arthur Braga · C7 Barbearia Tradicional</p>
+<h1>Catálogo de cortes</h1>
+<p class="lead">Escolha um estilo e mostre a referência ao Arthur no atendimento. A altura do degradê e o comprimento do topo podem ser ajustados ao seu cabelo.</p>
+<div class="actions"><a class="button primary" href="https://c7barbeariatradicional.com.br/">Agendar na C7</a><a class="button" href="https://wa.me/message/7AZPO5FSDTE3I1">Falar no WhatsApp</a></div>
+</div>
+<section aria-labelledby="inspire">
+<h2 id="inspire">Inspire-se</h2>
+<div class="filters" role="group" aria-label="Filtrar estilos" hidden>
+<button type="button" data-filter="todos" aria-pressed="true">Todos</button>
+<button type="button" data-filter="degrade" aria-pressed="false">Degradês</button>
+<button type="button" data-filter="classico" aria-pressed="false">Clássicos</button>
+<button type="button" data-filter="textura" aria-pressed="false">Textura e volume</button>
+</div>
+<p class="note">Imagens ilustrativas geradas por IA para referência de estilo.</p>
+<div class="grid">
+<article class="style" data-category="degrade">
+<div class="portrait" role="img" aria-label="Referência visual de degradê baixo" style="--x:0%;--y:0%"></div>
+<div class="copy"><h3>Degradê baixo</h3><p>A transição começa perto da orelha e da nuca. Mantém mais volume nas laterais.</p></div>
+</article>
+<article class="style" data-category="degrade">
+<div class="portrait" role="img" aria-label="Referência visual de degradê médio" style="--x:50%;--y:0%"></div>
+<div class="copy"><h3>Degradê médio</h3><p>A transição sobe até o meio da lateral. Equilibra contraste e volume.</p></div>
+</article>
+<article class="style" data-category="degrade">
+<div class="portrait" role="img" aria-label="Referência visual de degradê alto" style="--x:100%;--y:0%"></div>
+<div class="copy"><h3>Degradê alto</h3><p>A transição começa mais acima e destaca o volume do topo.</p></div>
+</article>
+<article class="style" data-category="classico">
+<div class="portrait" role="img" aria-label="Referência visual de clássico com risca" style="--x:0%;--y:50%"></div>
+<div class="copy"><h3>Clássico com risca</h3><p>Divisão lateral e topo penteado, com contornos bem definidos.</p></div>
+</article>
+<article class="style" data-category="classico">
+<div class="portrait" role="img" aria-label="Referência visual de buzz cut" style="--x:50%;--y:50%"></div>
+<div class="copy"><h3>Buzz cut</h3><p>Comprimento curto e uniforme. Uma opção prática para o dia a dia.</p></div>
+</article>
+<article class="style" data-category="textura">
+<div class="portrait" role="img" aria-label="Referência visual de french crop" style="--x:100%;--y:50%"></div>
+<div class="copy"><h3>French crop</h3><p>Topo texturizado e franja curta penteada para a frente.</p></div>
+</article>
+<article class="style" data-category="classico">
+<div class="portrait" role="img" aria-label="Referência visual de penteado para trás" style="--x:0%;--y:100%"></div>
+<div class="copy"><h3>Penteado para trás</h3><p>Topo mais comprido, direcionado para trás, com laterais controladas.</p></div>
+</article>
+<article class="style" data-category="textura">
+<div class="portrait" role="img" aria-label="Referência visual de mullet moderno" style="--x:50%;--y:100%"></div>
+<div class="copy"><h3>Mullet moderno</h3><p>Laterais mais curtas e comprimento preservado na nuca.</p></div>
+</article>
+<article class="style" data-category="textura">
+<div class="portrait" role="img" aria-label="Referência visual de taper cacheado" style="--x:100%;--y:100%"></div>
+<div class="copy"><h3>Taper cacheado</h3><p>Mantém os cachos em destaque, com transição discreta nas costeletas e na nuca.</p></div>
+</article>
+</div>
+</section>
+<section aria-labelledby="work">
+<p class="kicker">Portfólio</p>
+<h2 id="work">Na cadeira do Arthur</h2>
+<div class="work">
+<figure><img src="/corte.webp" width="900" height="1200" loading="lazy" alt="Arthur trabalhando no topo de um corte com degradê"><figcaption>Degradê visto de perfil</figcaption></figure>
+<figure><img src="/acabamento.webp" width="900" height="1200" loading="lazy" alt="Arthur finalizando um corte com secador"><figcaption>Acabamento e finalização</figcaption></figure>
+</div>
+</section>
+</main>
+<footer><div class="wrap">C7 Barbearia Tradicional · Goiânia, GO</div></footer>
+<script>
+const filters = document.querySelector('.filters');
+const buttons = [...filters.querySelectorAll('button')];
+const cards = [...document.querySelectorAll('.style')];
+filters.hidden = false;
+filters.addEventListener('click', (event) => {
+  const button = event.target.closest('button[data-filter]');
+  if (!button) return;
+  const category = button.dataset.filter;
+  for (const option of buttons) option.setAttribute('aria-pressed', String(option === button));
+  for (const card of cards) card.hidden = category !== 'todos' && card.dataset.category !== category;
+});
+</script>
+</body>
+</html>
